@@ -1,5 +1,38 @@
 ### ETHGlobal 2026 NYC submission  TeamA (working name)
 
+#### 2026-06-13 18:00
+
+Progress, but feeling ill.  Heading out to sleep.
+
+
+#### 2026-06-13 17:20
+
+Discussing tooling and best practices with claude.  I will include the transcript in my repo.  I would also love to have this type of conversation with an experienced ethereum developer in-person, but I'm hacking solo and it's only 12 hours to submission deadline, so I don't think anyone's going to enjoy random conversations like this right now!.
+
+
+
+#### 2026-06-13 17:15
+
+  - [x] register fromwei.eth on ENS: https://app.ens.domains/fromwei.eth/register second transaction failed on chrome and metamask on desktop, but did it from iOS and it was fine; weird and ate 30 mins for no reason :/
+
+
+#### 2026-06-13 16:28
+
+wei-names uses foundry, and I'm on Fedora, so I'll go with the tools used in the wei-names repo:
+
+- goal: egnyc26.fromwei.eth should resolve via ENS to something cool
+  - [x] register egnyc26.wei at https://zfi.wei.is/domains/#eg26nyc via  https://etherscan.io/tx/0x3f54eee7af8d052f101c761e1cba33cacb19922e609f5360001b32682b4c8789
+  - [ ] register fromwei.eth on ENS: https://app.ens.domains/fromwei.eth/register 
+
+I consulted Claude Opus[^1] on the plan, and it recommended reading z0r0z/zolidity too, so I'm going to read that...looks like I had that idea a long time ago:
+
+```
+20260613-16:42.41 martin@cdcx4 eg ▶ $ ls -lad ~/src/zolidity/.git
+drwxr-xr-x. 6 martin martin 4096 May 28  2024 /home/martin/src/zolidity/.git/
+```
+
+...but I imagine things have changed since then, so lots of reading to do.
+
 
 
 #### 2026-06-13 14:56
