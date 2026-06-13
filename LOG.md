@@ -2,6 +2,41 @@
 
 
 
+#### 2026-06-13 14:56
+
+need a break from reading; back soon.
+
+
+#### 2026-06-13 13:00
+
+Back at site. No response on my Discord message about AppClip or paymaster ERC-4337 support, so I'll just do it myself.
+
+
+
+#### 2026-06-13 10:30
+
+I need to read about ERC wei-names resolution and how I can deploy a contract that adheres to ENSIP-10 (wildcard resolution) and calls the wei-names contract.
+
+- ENSIP-10: https://docs.ens.domains/ensip/10/
+- Deploying your first smart contract: https://ethereum.org/developers/tutorials/deploying-your-first-smart-contract/
+- tenderly: for testing
+  - 
+  - e.g.:
+    - https://dashboard.tenderly.co/tx/arbitrum/0x1fa461cfc27f25a87d9ed6f43de7c150abb456b0bb483ac19b8af5020e27594a/debugger?trace=0.5.0.0.1.2 related to https://arbiscan.io/tx/0x1fa461cfc27f25a87d9ed6f43de7c150abb456b0bb483ac19b8af5020e27594a
+    - https://dashboard.tenderly.co/tx/sepolia/0x56d35cb856bbb7216afe930ee25514d080ce97bc68da8d9cf2d8fb6d44285099/debugger?trace=0.4.1
+    - https://dashboard.tenderly.co/drnick/project/simulator/bb90c1ea-2b41-47c5-80e6-be18e5ba0123
+
+
+##### stub contract:
+
+```
+interface ExtendedResolver {
+    function resolve(bytes calldata name, bytes calldata data) external view returns(bytes);
+}
+```
+
+
+
 #### 2026-06-13 01:00
 
 USA won; getting some sleep.
