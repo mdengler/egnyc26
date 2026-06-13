@@ -4,7 +4,41 @@
 
 #### 2026-06-13 14:56
 
-need a break from reading; back soon.
+read source code of experts: https://github.com/z0r0z/wei-names
+
+Need to normalize labels:
+
+```
+import { ens_normalize } from '@adraffy/ens-normalize';
+
+function normalizeLabel(label) {
+  try {
+    const normalized = ens_normalize(label);
+    if (normalized.includes('.')) return null; // No dots in labels
+    return normalized;
+  } catch (e) {
+    return null; // Invalid (confusables, invisible chars, etc.)
+  }
+}
+```
+
+
+Note:
+
+Best Practices for Integrators
+- Normalize input with ENSIP-15 before registration (same as ENS)
+- Use the verification tool or compute expected token IDs when buying on secondary markets
+- Display normalization warnings for names that don't pass ENSIP-15
+- Link to the official dapp (wei.domains/#name) for name lookups
+- Check isActive state before displaying resolver data — expired names return empty from all resolver reads
+- Handle refund failures — if your contract calls reveal or renew, ensure it can receive ETH refunds
+
+
+Wei names subdomain contract: https://etherscan.io/address/0x53745292f0d30d68204a63002C17bDa16C772bf7#code
+
+
+So much to read and figure out what's relevant :).  Need a break from reading; back soon (for real this time).
+
 
 
 #### 2026-06-13 13:00
