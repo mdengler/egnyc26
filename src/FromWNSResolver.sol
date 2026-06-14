@@ -19,14 +19,35 @@ namehash be the algorithm defined in ENSIP-1.
 dnsencode be the process for encoding DNS names specified in section 3.1 of RFC1035, with the exception that there is no limit on the total length of the encoded name. The empty string is encoded identically to the name '.', as a single 0-octet.
 parent be a function that removes the first label from a name (eg, parent('foo.eth') = 'eth'). parent('tld') is defined as the empty string ''.
 ens is the ENS registry contract for the current network.
-ENSIP-10-compliant ENS resolvers MAY implement the following function interface:
+*/
 
-￼
+contract FromWNSResolver {
+
+    /*
+      ENSIP-10-compliant ENS resolvers MAY implement the following function interface:
+
 interface ExtendedResolver {
     function resolve(bytes calldata name, bytes calldata data) external view returns(bytes);
 }
-If a resolver implements this function, it MUST return true when supportsInterface() is called on it with the interface's ID, 0x9061b923.
+    */
 
+    function resolve(bytes calldata name, bytes calldata data) {
+        bytes record = "";
+        // stub
+        return record;
+    }
+
+    /*
+      /*
+  If a resolver implements [resolve(..)], it MUST return true when supportsInterface() is called on it with the interface's ID, 0x9061b923.
+     */
+    function supportsInterface(int calldata id) {
+        return id == 0x9061b923;
+    }
+}
+
+
+/*
 ENS clients will call resolve with the DNS-encoded name to resolve and the encoded calldata for a resolver function (as specified in ENSIP-1 and elsewhere); the function MUST either return valid return data for that function, or revert if it is not supported.
 
 ENSIP-10-compliant ENS clients MUST perform the following procedure when determining the resolver for a given name:
