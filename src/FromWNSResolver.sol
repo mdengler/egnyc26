@@ -34,9 +34,28 @@ contract FromWNSResolver {
            return resolver[func].decodeReturnData(result);
         */
 
-        bytes memory record = "";
-        // stub
-        return record;
+        bytes32 node = _weiNode(name, 0); // namehash of <prefix>.wei
+        address a = WNS.resolve(uint256(node));
+
+        bytes4 selector = bytes4(data[:4]);
+        if (selector == 0x3b3b57de) return abi.encode(a); // addr(bytes32)
+        if (selector == 0xf1cb7e06) {
+            // addr(bytes32,uint256) — answer only ETH (coinType 60)
+            (, uint256 coinType) = abi.decode(data[4:], (bytes32, uint256));
+            if (coinType == 60) return abi.encode(abi.encodePacked(a));
+        }
+        return ""; // text/contenthash/other: no record
+    }
+
+    /// @dev EIP-137 namehash of DNS-encoded `name`, but with its fixed
+    ///      ".fromwei.eth" parent swapped for ".wei". Recurses to the parent,
+    ///      then folds each prefix label back in on the way out.
+    function _weiNode(bytes calldata name, uint256 i) internal pure returns (bytes32) {
+        // 13 == len(\x07fromwei\x03eth\x00); when only the parent remains, base = namehash("wei")
+        if (name.length - i == 13) return WEI_NODE;
+        uint256 len = uint8(name[i]);
+        bytes32 labelHash = keccak256(name[i + 1:i + 1 + len]);
+        return keccak256(abi.encodePacked(_weiNode(name, i + 1 + len), labelHash));
     }
 
     // @dev ERC-165: IExtendedResolver (0x9061b923) + ERC-165 (0x01ffc9a7).
