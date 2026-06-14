@@ -29,33 +29,33 @@ contract FromWNSResolverTest is Test {
     // --- node derivation (deterministic, no network needed) ---
 
     function test_weiNode_singleLabel() public view {
-        // namehash("egnyc26.wei") = keccak256(namehash("wei"), keccak256("egnyc26"))
+        // namehash("eg26nyc.wei") = keccak256(namehash("wei"), keccak256("eg26nyc"))
         bytes32 weiRoot = 0xa82820059d5df798546bcc2985157a77c3eef25eba9ba01899927333efacbd6f;
-        bytes32 expected = keccak256(abi.encodePacked(weiRoot, keccak256(bytes("egnyc26"))));
-        assertEq(harness.weiNode(_dns("egnyc26.fromwei.eth")), expected);
+        bytes32 expected = keccak256(abi.encodePacked(weiRoot, keccak256(bytes("eg26nyc"))));
+        assertEq(harness.weiNode(_dns("eg26nyc.fromwei.eth")), expected);
     }
 
     function test_weiNode_multiLabel() public view {
-        // sub.egnyc26.fromwei.eth -> namehash("sub.egnyc26.wei")
-        bytes32 parent = harness.weiNode(_dns("egnyc26.fromwei.eth")); // = namehash("egnyc26.wei")
+        // sub.eg26nyc.fromwei.eth -> namehash("sub.eg26nyc.wei")
+        bytes32 parent = harness.weiNode(_dns("eg26nyc.fromwei.eth")); // = namehash("eg26nyc.wei")
         bytes32 expected = keccak256(abi.encodePacked(parent, keccak256(bytes("sub"))));
-        assertEq(harness.weiNode(_dns("sub.egnyc26.fromwei.eth")), expected);
+        assertEq(harness.weiNode(_dns("sub.eg26nyc.fromwei.eth")), expected);
     }
 
     // --- live resolution against mainnet wei-names (needs ETH_RPC_URL) ---
 
-    function test_resolves_egnyc26_live() public {
+    function test_resolves_eg26nyc_live() public {
         vm.createSelectFork(vm.envString("ETH_RPC_URL"));
         FromWNSResolver resolver = new FromWNSResolver();
         bytes memory data = abi.encodeWithSelector(bytes4(0x3b3b57de), bytes32(0)); // addr(bytes32)
-        address a = abi.decode(resolver.resolve(_dns("egnyc26.fromwei.eth"), data), (address));
-        console2.log("egnyc26.fromwei.eth ->", a);
-        assertTrue(a != address(0), "egnyc26.wei must be active/owned on mainnet");
+        address a = abi.decode(resolver.resolve(_dns("eg26nyc.fromwei.eth"), data), (address));
+        console2.log("eg26nyc.fromwei.eth ->", a);
+        assertTrue(a != address(0), "eg26nyc.wei must be active/owned on mainnet");
     }
 
     // --- helpers ---
 
-    /// @dev DNS-wire-encode a dotted name, e.g. "egnyc26.fromwei.eth".
+    /// @dev DNS-wire-encode a dotted name, e.g. "eg26nyc.fromwei.eth".
     function _dns(string memory name) internal pure returns (bytes memory out) {
         bytes memory s = bytes(name);
         uint256 start = 0;
