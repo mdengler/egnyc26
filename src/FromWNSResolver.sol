@@ -34,47 +34,32 @@ interface IWNS {
     function resolve(uint256 tokenId) external view returns (address);
 }
 
-
+  /// @notice ENSIP-10 wildcard resolver: *.fromwei.eth -> <label>.wei via Wei Name Service.
 contract FromWNSResolver {
+    IWNS internal constant WNS = IWNS(0x0000000000696760E15f265e828DB644A0c242EB);
 
-    function resolve(bytes calldata name, bytes calldata data) {
+    /// @dev namehash("wei");
+    bytes32 internal constant WEI_NODE = 0xa82820059d5df798546bcc2985157a77c3eef25eba9ba01899927333efacbd6f;  // `cast namehash wei`
+
+    function resolve(bytes calldata name, bytes calldata data) external view returns (bytes memory) {
+
+        /* will be used by this sort of pseudocode in clients:
+           const supportsENSIP10 = resolver.supportsInterface('0x9061b923');
+           if(supportsENSIP10) {
+           const calldata = resolver[func].encodeFunctionCall(namehash(name), ...args);
+           const result = resolver.resolve(dnsencode(name), calldata);
+           return resolver[func].decodeReturnData(result);
+        */
+
         bytes record = "";
         // stub
         return record;
     }
 
-    /*
-      /*
-  If a resolver implements [resolve(..)], it MUST return true when supportsInterface() is called on it with the interface's ID, 0x9061b923.
-     */
+    // @dev ERC-165: IExtendedResolver (0x9061b923) + ERC-165 (0x01ffc9a7).
     function supportsInterface(bytes4 id) external pure returns (bool) {
-        return id == 0x9061b923 ;
-    }
-
-    /*
-      Questions from supportsInterface (basic solidity):
-        - why bytes4 and not int?
-        - why not `calldata`
-        - what's up with `external pure returns (bool)` -- where is `returns` in the `resolve` function?  I can guess what "pure" means, but how about "external"?  Whence the magical claude-suggested 0x01ffc9a7 for ERC-165, and why?
-     */
-}
-
-
-/*
-function resolve(name, func, ...args) {
-    const [resolver, resolverName] = getResolver(name);
-    if(resolver === null) {
-        return null;
-    }
-    const supportsENSIP10 = resolver.supportsInterface('0x9061b923');
-    if(supportsENSIP10) {
-        const calldata = resolver[func].encodeFunctionCall(namehash(name), ...args);
-        const result = resolver.resolve(dnsencode(name), calldata);
-        return resolver[func].decodeReturnData(result);
-    } else if(name == resolverName) {
-        return resolver[func](...args);
-    } else {
-        return null;
+        // If a resolver implements [resolve(..)], it MUST return true when supportsInterface() is called on it with the interface's ID, 0x9061b923.
+        return id == 0x9061b923 || id == 0x01ffc9a7;
     }
 }
-*/
+

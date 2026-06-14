@@ -32,6 +32,12 @@ check time constraints and fill in project submission web page
 
 ### Journal
 
+
+#### 2026-06-14 07:57
+
+Going to checkpoint, then lean on Claude for implementation but really interested to put this all together afterwards into one of the bigger project ideas I had: 1inch SwapVM extruction to resolve WNS names as a small part of a larger "manufacturer-rebate servicing app" Aqua app to leverage the subscription idea and earn yield on the "accounts-payable"-like rebate cash.
+
+
 #### 2026-06-14 07:45
 
 Checkpoint.  Time to accellerate to make the submission deadline; learned a lot already.
