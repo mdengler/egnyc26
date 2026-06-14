@@ -1,6 +1,11 @@
 ### ETHGlobal 2026 NYC submission  TeamA (working name)
 
 
+#### 2026-06-14 06:45
+
+Correct contract code location.  Time to do some solidity hacking.
+
+
 #### 2026-06-14 06:33
 
 Created `fromwei-resolver` and moved my stub solidity contract there:
