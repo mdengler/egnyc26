@@ -1,6 +1,19 @@
 ### ETHGlobal 2026 NYC submission  TeamA (working name)
 
 
+#### 2026-06-14 06:33
+
+Created `fromwei-resolver` and moved my stub solidity contract there:
+
+```
+forge init --no-git --offline fromwns-resolver && cd fromwns-resolver
+mv ../src/FromWNSResolver.sol .
+```
+
+
+#### 2026-06-14 06:15
+
+On subway now, so no internet :).  Got emacs-solidity installed for M-x solidity-mode and started `FromWNSResolver.sol`.  Got https://github.com/z0r0z/zolidity prerequisites updated while stopped at a station.
 
 
 #### 2026-06-14 06:00
