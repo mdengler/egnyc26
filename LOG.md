@@ -1,4 +1,40 @@
-### ETHGlobal 2026 NYC submission  TeamA (working name)
+## ETHGlobal 2026 NYC submission  TeamA (working name)
+
+### high-level TODOs
+
+- [x] learn options
+- [x] brainstorm ideas
+- [x] select idea
+- [x] make connections throughout
+- [x] create stubs
+- [ ] one 'implement - test - deploy' loop
+- [ ] create demo
+- [ ] create logos
+- [ ] record video
+- [ ] put in project submission
+- [ ] refine as time allows
+- [ ] document
+- [ ] say thanks and goodbyes
+
+
+### implementation scratchpad
+
+test/FromWNSResolver.t.sol
+check test wei name - use martindengler.wei
+interate on "subway runbook" steps
+check time constraints and fill in project submission web page
+
+
+### Next study steps
+
+- solidity interface vs contract declaration nuances (e.g., why `returns` goes in `interface` and not `contract`)
+
+
+### Journal
+
+#### 2026-06-14 07:45
+
+Checkpoint.  Time to accellerate to make the submission deadline; learned a lot already.
 
 
 #### 2026-06-14 06:45
