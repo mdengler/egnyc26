@@ -7,7 +7,7 @@
 - [x] select idea
 - [x] make connections throughout
 - [x] create stubs
-- [ ] one 'implement - test - deploy' loop
+- [x] one 'implement - test - deploy' loop
 - [ ] create demo
 - [ ] create logos
 - [ ] record video
@@ -31,6 +31,22 @@ check time constraints and fill in project submission web page
 
 
 ### Journal
+
+
+#### 2026-06-14 08:47
+
+Deployed!
+
+```
+20260614-08:44.50 martin@cdcx4 eg ▶ $ forge create src/FromWNSResolver.sol:FromWNSResolver --rpc-url "$ETH_RPC_URL" --account deployer --broadcast
+Enter keystore password:
+[⠊] Compiling...
+No files changed, compilation skipped
+Deployer: 0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b
+Deployed to: 0x8403F2BEE92296a1858fb83A019899D01a502abe
+Transaction hash: 0x1d33b17d55f9d7e367300e0d1f6cb576f283b5d73d915bf6ec28182a74ba4795
+
+```
 
 
 #### 2026-06-14 07:57
@@ -88,8 +104,8 @@ Discussing tooling and best practices with claude.  I will include the transcrip
 
 wei-names uses foundry, and I'm on Fedora, so I'll go with the tools used in the wei-names repo:
 
-- goal: egnyc26.fromwei.eth should resolve via ENS to something cool
-  - [x] register egnyc26.wei at https://zfi.wei.is/domains/#eg26nyc via  https://etherscan.io/tx/0x3f54eee7af8d052f101c761e1cba33cacb19922e609f5360001b32682b4c8789
+- goal: eg26nyc.fromwei.eth should resolve via ENS to something cool
+  - [x] register eg26nyc.wei at https://zfi.wei.is/domains/#eg26nyc via  https://etherscan.io/tx/0x3f54eee7af8d052f101c761e1cba33cacb19922e609f5360001b32682b4c8789
   - [ ] register fromwei.eth on ENS: https://app.ens.domains/fromwei.eth/register 
 
 I consulted Claude Opus[^1] on the plan, and it recommended reading z0r0z/zolidity too, so I'm going to read that...looks like I had that idea a long time ago:
