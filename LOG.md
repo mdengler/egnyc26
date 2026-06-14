@@ -1,5 +1,13 @@
 ### ETHGlobal 2026 NYC submission  TeamA (working name)
 
+
+
+
+#### 2026-06-14 06:00
+
+Heading back to the hackathon; feeling better.  Need to get a contract written and tested in foundry.  Claude pointed out that I wasn't articulating that "'Solidity runs on-chain in the EVM as a result of transactions' is correct for writes. But reads don't use transactions [so those are simply run via a local EVM]" had not made it into my mental model explicitly.  That is a key realisation.  TIme to get back to contract writing, though.
+
+
 #### 2026-06-13 18:00
 
 Progress, but feeling ill.  Heading out to sleep.
