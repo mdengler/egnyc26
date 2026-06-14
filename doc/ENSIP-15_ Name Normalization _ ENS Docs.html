@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en" data-vocs>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/initializeTheme.iife.js"></script><script defer="" data-domain="docs.ens" data-api="/api/blah/event" src="/api/blah/script"></script><script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script><link rel="preload" as="image" href="/img/logo-mark.svg"/><title>ENSIP-15: Name Normalization | ENS Docs</title><meta name="description" content="ENS name normalization."/><link rel="icon" href="/img/icon.svg" type="image/svg+xml"/><meta property="og:type" content="website"/><meta property="og:title" content="ENSIP-15: Name Normalization"/><meta property="og:url" content="https://docs.ens.domains"/><meta property="og:description" content="ENS name normalization."/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/><meta name="twitter:card" content="summary_large_image"/>
+    <script type="module" crossorigin src="/assets/index-IZk56Svh.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/style-B-jVVlgP.css">
+  </head>
+  <body>
+    <span style="display: none;">Are you an LLM? Read <a href="/llms.txt">llms.txt</a> for a summary of the docs, or <a href="/llms-full.txt">llms-full.txt</a> for the full context.</span>
+    <div id="app"><base href="https://docs.ens.domains"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/><div class="vocs_DocsLayout" data-layout="docs" style="--vocs-fontFamily_default:Inter, system-ui, -apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, Roboto, Oxygen, Ubuntu, Cantarell, &#x27;Open Sans&#x27;, &#x27;Helvetica Neue&#x27;, sans-serif"><a class="vocs_SkipLink vocs_utils_visuallyHidden" href="/ensip/15#vocs-content">Skip to content</a><div class="vocs_DocsLayout_gutterLeft"><aside class="vocs_Sidebar vocs_DocsLayout_sidebar"><div><div class="vocs_Sidebar_logoWrapper"><div class="vocs_Sidebar_logo"><a style="align-items:center;display:flex;height:100%" href="/" data-discover="true"><img alt="Logo" class="vocs_NavLogo_logoImage vocs_Logo" src="/img/logo-mark.svg"/></a></div><div class="vocs_Sidebar_divider"></div></div><nav class="vocs_Sidebar_navigation"><div class="vocs_Sidebar_group"><section class="vocs_Sidebar_section vocs_Sidebar_level vocs_Sidebar_levelCollapsed"><div class="vocs_Sidebar_sectionHeader" role="button" tabindex="0"><div class="vocs_Sidebar_sectionTitle">Intro</div><div role="button" tabindex="0"><div aria-label="toggle section" class="vocs_Icon vocs_Sidebar_sectionCollapse vocs_Sidebar_sectionCollapseActive" role="img" style="--vocs_Icon_size:16px"><svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Chevron Right</title><path d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></div></div></section><section class="vocs_Sidebar_section vocs_Sidebar_level vocs_Sidebar_levelCollapsed"><div class="vocs_Sidebar_sectionHeader" role="button" tabindex="0"><div class="vocs_Sidebar_sectionTitle">Using ENS</div><div role="button" tabindex="0"><div aria-label="toggle section" class="vocs_Icon vocs_Sidebar_sectionCollapse vocs_Sidebar_sectionCollapseActive" role="img" style="--vocs_Icon_size:16px"><svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Chevron Right</title><path d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></div></div></section><section class="vocs_Sidebar_section vocs_Sidebar_level vocs_Sidebar_levelCollapsed"><div class="vocs_Sidebar_sectionHeader" role="button" tabindex="0"><div class="vocs_Sidebar_sectionTitle">Smart Contracts</div><div role="button" tabindex="0"><div aria-label="toggle section" class="vocs_Icon vocs_Sidebar_sectionCollapse vocs_Sidebar_sectionCollapseActive" role="img" style="--vocs_Icon_size:16px"><svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Chevron Right</title><path d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></div></div></section><section class="vocs_Sidebar_section vocs_Sidebar_level vocs_Sidebar_levelCollapsed"><div class="vocs_Sidebar_sectionHeader" role="button" tabindex="0"><div class="vocs_Sidebar_sectionTitle">Governance</div><div role="button" tabindex="0"><div aria-label="toggle section" class="vocs_Icon vocs_Sidebar_sectionCollapse vocs_Sidebar_sectionCollapseActive" role="img" style="--vocs_Icon_size:16px"><svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Chevron Right</title><path d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></div></div></section><section class="vocs_Sidebar_section vocs_Sidebar_level"><div class="vocs_Sidebar_sectionHeader" role="button" tabindex="0"><div class="vocs_Sidebar_sectionTitle">Improvement Proposals</div><div role="button" tabindex="0"><div aria-label="toggle section" class="vocs_Icon vocs_Sidebar_sectionCollapse" role="img" style="--vocs_Icon_size:16px"><svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Chevron Right</title><path d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></div></div><div class="vocs_Sidebar_items"><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip" data-discover="true">What is an ENSIP?</a><section class="vocs_Sidebar_section"><div class="vocs_Sidebar_sectionHeader"><div class="vocs_Sidebar_item">Proposals</div></div><div class="vocs_Sidebar_items vocs_Sidebar_levelInset"><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/1" data-discover="true">ENSIP-1: ENS</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/2" data-discover="true">ENSIP-2: Initial Hash Registrar</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/3" data-discover="true">ENSIP-3: Reverse Resolution</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/4" data-discover="true">ENSIP-4: Support for contract ABIs</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/5" data-discover="true">ENSIP-5: Text Records</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/6" data-discover="true">ENSIP-6: DNS-in-ENS</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/7" data-discover="true">ENSIP-7: Contenthash field</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/8" data-discover="true">ENSIP-8: Interface Discovery</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/9" data-discover="true">ENSIP-9: Multichain Address resolution</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/10" data-discover="true">ENSIP-10: Wildcard Resolution</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/11" data-discover="true">ENSIP-11: EVM compatible Chain Address Resolution</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/12" data-discover="true">ENSIP-12: Avatar Text Records</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/13" data-discover="true">ENSIP-13: SAFE Authentication For ENS</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/14" data-discover="true">ENSIP-14: On Chain Source Parameter</a><a data-active="true" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/15" data-discover="true">ENSIP-15: Name Normalization</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/16" data-discover="true">ENSIP-16: Metadata Event Discovery</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/17" data-discover="true">ENSIP-17: Gasless DNS Resolution</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/18" data-discover="true">ENSIP-18: Profile Text Records</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/19" data-discover="true">ENSIP-19: Multichain Primary Names</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/20" data-discover="true">ENSIP-20: Wildcard Writing</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/21" data-discover="true">ENSIP-21: Batch Gateway Offchain Lookup Protocol</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/22" data-discover="true">ENSIP-22: Contract Features</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/23" data-discover="true">ENSIP-23: Universal Resolver</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/24" data-discover="true">ENSIP-24: Arbitrary Data Resolution</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/25" data-discover="true">ENSIP-25: AI Agent Registry ENS Name Verification</a><a data-active="false" class="vocs_Sidebar_item vocs_Link vocs_Link_styleless" href="/ensip/26" data-discover="true">ENSIP-26: Agent Text Records</a></div></section></div></section></div></nav></div><div class="vocs_Sidebar_footer"><div class="vocs_Sidebar_footerCurtain"></div><div class="vocs_Sidebar_footerContent"><div class="vocs_Socials"><a class="vocs_Socials_button" href="https://github.com/ensdomains/docs" target="_blank" rel="noopener noreferrer"><div aria-label="GitHub" class="vocs_Icon vocs_Socials_icon" role="img" style="--vocs_Icon_size:17px"><svg width="100%" height="100%" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="currentColor"></path></svg></div></a><div style="width:1px;margin-top:var(--vocs-space_4);margin-bottom:var(--vocs-space_4);background-color:var(--vocs-color_border)"></div><a class="vocs_Socials_button" href="https://t.me/+aLmF83si62ZhOGNh" target="_blank" rel="noopener noreferrer"><div aria-label="Telegram" class="vocs_Icon vocs_Socials_icon" role="img" style="--vocs_Icon_size:17px"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 50 50"><title>Telegram</title><path d="M25 2c12.703 0 23 10.297 23 23S37.703 48 25 48 2 37.703 2 25 12.297 2 25 2zm7.934 32.375c.423-1.298 2.405-14.234 2.65-16.783.074-.772-.17-1.285-.648-1.514-.578-.278-1.434-.139-2.427.219-1.362.491-18.774 7.884-19.78 8.312-.954.405-1.856.847-1.856 1.487 0 .45.267.703 1.003.966.766.273 2.695.858 3.834 1.172 1.097.303 2.346.04 3.046-.395.742-.461 9.305-6.191 9.92-6.693.614-.502 1.104.141.602.644-.502.502-6.38 6.207-7.155 6.997-.941.959-.273 1.953.358 2.351.721.454 5.906 3.932 6.687 4.49.781.558 1.573.811 2.298.811.725 0 1.107-.955 1.468-2.064z" fill="currentColor"></path></svg></div></a></div></div></div></aside></div><div class="vocs_DocsLayout_gutterTop vocs_DocsLayout_gutterTop_offsetLeftGutter"><div class="vocs_DesktopTopNav"><button class="vocs_DesktopSearch_search" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-_R_im7_" data-state="closed"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:2px"><path d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>Search...<div class="vocs_DesktopSearch_searchCommand"><div style="background:currentColor;transform:rotate(45deg);width:1.5px;border-radius:2px;height:100%"></div></div></button><div class="vocs_DesktopTopNav_logoWrapper"><div class="vocs_DesktopTopNav_logo"><a style="align-items:center;display:flex;height:56px;margin-top:4px" href="/" data-discover="true"><img alt="Logo" class="vocs_NavLogo_logoImage vocs_Logo" src="/img/logo-mark.svg"/></a></div></div><div class="vocs_DesktopTopNav_section"></div><div class="vocs_DesktopTopNav_section"></div></div><div class="vocs_MobileTopNav"><div class="vocs_MobileTopNav_section"><div class="vocs_MobileTopNav_group"><div class="vocs_MobileTopNav_logo"><a style="align-items:center;display:flex;height:100%" href="/" data-discover="true"><img alt="Logo" class="vocs_NavLogo_logoImage vocs_Logo" src="/img/logo-mark.svg"/></a></div></div><div class="vocs_MobileTopNav_group"><nav aria-label="Main" data-orientation="horizontal" dir="ltr" class="vocs_MobileTopNav_navigation vocs_NavigationMenu"><div style="position:relative"><ul data-orientation="horizontal" class="vocs_NavigationMenu_list" dir="ltr"></ul></div></nav><div class="vocs_MobileTopNav_navigation vocs_MobileTopNav_navigation_compact"><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-_R_2j67_" data-state="closed" class="vocs_MobileTopNav_menuTrigger vocs_MobileTopNav_navigationItem">Menu<div aria-label="Menu" class="vocs_Icon" role="img" style="--vocs_Icon_size:16px"><svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Chevron Down</title><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></button></div></div></div><div class="vocs_MobileTopNav_section"><div class="vocs_MobileTopNav_group" style="margin-right:-8px"><button class="vocs_MobileSearch_searchButton" type="button" aria-label="Search" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-_R_d67_" data-state="closed"><svg width="21" height="21" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 6.5C10 8.433 8.433 10 6.5 10C4.567 10 3 8.433 3 6.5C3 4.567 4.567 3 6.5 3C8.433 3 10 4.567 10 6.5ZM9.30884 10.0159C8.53901 10.6318 7.56251 11 6.5 11C4.01472 11 2 8.98528 2 6.5C2 4.01472 4.01472 2 6.5 2C8.98528 2 11 4.01472 11 6.5C11 7.56251 10.6318 8.53901 10.0159 9.30884L12.8536 12.1464C13.0488 12.3417 13.0488 12.6583 12.8536 12.8536C12.6583 13.0488 12.3417 13.0488 12.1464 12.8536L9.30884 10.0159Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></button></div></div></div></div><div class="vocs_DocsLayout_gutterTopCurtain vocs_DocsLayout_gutterTopCurtain_withSidebar"><div class="vocs_DesktopTopNav_curtain"></div><div class="vocs_MobileTopNav_curtain"><div class="vocs_MobileTopNav_curtainGroup"><div class="vocs_MobileTopNav_curtainItem"><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-_R_3a7_" data-state="closed" class="vocs_MobileTopNav_menuTrigger"><div aria-label="Menu" class="vocs_Icon" role="img" style="--vocs_Icon_size:13px"><svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 79 48" fill="none"><title>Menu</title><path fill="currentColor" d="M19.528 47.232h40.87c1.952 0 3.515-1.562 3.515-3.564a3.5 3.5 0 0 0-3.516-3.516H19.528a3.501 3.501 0 0 0-3.515 3.516c0 2.002 1.562 3.564 3.515 3.564ZM12.057 27.262h55.81a3.501 3.501 0 0 0 3.516-3.516 3.501 3.501 0 0 0-3.515-3.515h-55.81a3.501 3.501 0 0 0-3.516 3.515 3.501 3.501 0 0 0 3.515 3.516ZM4.391 7.34H75.29c2.002 0 3.515-1.563 3.515-3.516 0-2.002-1.513-3.564-3.515-3.564H4.39C2.438.26.876 1.822.876 3.824A3.501 3.501 0 0 0 4.39 7.34Z"></path></svg></div><div class="vocs_MobileTopNav_menuTitle">ENSIP-15: Name Normalization</div></button></div></div><div class="vocs_MobileTopNav_curtainGroup"><div class="vocs_MobileTopNav_curtainItem"><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-_R_la7_" data-state="closed" class="vocs_MobileTopNav_outlineTrigger">On this page<div aria-label="On this page" class="vocs_Icon" role="img" style="--vocs_Icon_size:16px"><svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Chevron Right</title><path d="M6.1584 3.13508C6.35985 2.94621 6.67627 2.95642 6.86514 3.15788L10.6151 7.15788C10.7954 7.3502 10.7954 7.64949 10.6151 7.84182L6.86514 11.8418C6.67627 12.0433 6.35985 12.0535 6.1584 11.8646C5.95694 11.6757 5.94673 11.3593 6.1356 11.1579L9.565 7.49985L6.1356 3.84182C5.94673 3.64036 5.95694 3.32394 6.1584 3.13508Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></button></div></div></div></div><div class="vocs_DocsLayout_gutterRight vocs_DocsLayout_gutterRight_withSidebar"><aside class="vocs_Outline"><div class="vocs_AiCtaDropdown"><a class="vocs_Button_button vocs_AiCtaDropdown_buttonLeft vocs_AiCtaDropdown_button vocs_Button_button" href="https://chatgpt.com?hints=search&amp;q=" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><div style="width:14px;height:14px"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><title>OpenAI</title><path fill="currentColor" d="M22.282 9.821a6 6 0 0 0-.516-4.91a6.05 6.05 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a6 6 0 0 0-3.998 2.9a6.05 6.05 0 0 0 .743 7.097a5.98 5.98 0 0 0 .51 4.911a6.05 6.05 0 0 0 6.515 2.9A6 6 0 0 0 13.26 24a6.06 6.06 0 0 0 5.772-4.206a6 6 0 0 0 3.997-2.9a6.06 6.06 0 0 0-.747-7.073M13.26 22.43a4.48 4.48 0 0 1-2.876-1.04l.141-.081l4.779-2.758a.8.8 0 0 0 .392-.681v-6.737l2.02 1.168a.07.07 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494M3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085l4.783 2.759a.77.77 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646M2.34 7.896a4.5 4.5 0 0 1 2.366-1.973V11.6a.77.77 0 0 0 .388.677l5.815 3.354l-2.02 1.168a.08.08 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.08.08 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667m2.01-3.023l-.141-.085l-4.774-2.782a.78.78 0 0 0-.785 0L9.409 9.23V6.897a.07.07 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.8.8 0 0 0-.393.681zm1.097-2.365l2.602-1.5l2.607 1.5v2.999l-2.597 1.5l-2.607-1.5Z"></path></svg></div>Ask in ChatGPT</a><button class="vocs_Button_button vocs_AiCtaDropdown_buttonRight vocs_AiCtaDropdown_button vocs_Button_button" type="button" id="radix-_R_16n_" aria-haspopup="menu" aria-expanded="false" data-state="closed"><div style="width:14px;height:14px"><svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><title>Chevron Down</title><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg></div></button></div></aside></div><div id="vocs-content" class="vocs_DocsLayout_content vocs_DocsLayout_content_withSidebar vocs_DocsLayout_content_withTopNav"><article class="vocs_Content"><header class="vocs_Header"><h1 class="vocs_H1 vocs_Heading"><div id="ensip-15-name-normalization" class="vocs_Heading_slugTarget"></div>ENSIP-15: Name Normalization<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#ensip-15-name-normalization" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h1></header>
+<div class="ensip-header flex flex-col gap-1"><p><strong>Authors:</strong> <!-- -->raffy.eth</p><p><strong>Created:</strong> <!-- -->April 3, 2023</p><p><strong>Status:</strong> <span class="capitalize">final</span></p></div>
+<h2 class="vocs_H2 vocs_Heading"><div id="abstract" class="vocs_Heading_slugTarget"></div>Abstract<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#abstract" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<p class="vocs_Paragraph">This ENSIP standardizes Ethereum Name Service (ENS) name normalization process outlined in <a class="vocs_Anchor vocs_Link vocs_Link_accent" href="/ensip/1#name-syntax" data-discover="true">ENSIP-1 § Name Syntax</a>.</p>
+<h2 class="vocs_H2 vocs_Heading"><div id="motivation" class="vocs_Heading_slugTarget"></div>Motivation<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#motivation" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Since <a class="vocs_Anchor vocs_Link vocs_Link_accent" href="/ensip/1" data-discover="true">ENSIP-1</a> (originally <a class="vocs_Anchor" href="https://eips.ethereum.org/EIPS/eip-137" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">EIP-137</a>) was finalized in 2016, Unicode has <a class="vocs_Anchor" href="https://unicode.org/history/publicationdates.html" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">evolved</a> from version 8.0.0 to 15.0.0 and incorporated many new characters, including complex emoji sequences.</li>
+<li class="vocs_ListItem">ENSIP-1 does not state the version of Unicode.</li>
+<li class="vocs_ListItem">ENSIP-1 implies but does not state an explicit flavor of IDNA processing.</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://unicode.org/reports/tr46/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UTS-46</a> is insufficient to normalize emoji sequences. Correct emoji processing is only possible with <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr51/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UTS-51</a>.</li>
+<li class="vocs_ListItem">Validation tests are needed to ensure implementation compliance.</li>
+<li class="vocs_ListItem">The success of ENS has encouraged spoofing via the following techniques:<!-- -->
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem">Insertion of zero-width characters.</li>
+<li class="vocs_ListItem">Using names which normalize differently between algorithms.</li>
+<li class="vocs_ListItem">Using names which appear differently between applications and devices.</li>
+<li class="vocs_ListItem">Substitution of confusable (look-alike) characters.</li>
+<li class="vocs_ListItem">Mixing incompatible scripts.</li>
+</ol>
+</li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="specification" class="vocs_Heading_slugTarget"></div>Specification<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#specification" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Unicode version <code class="vocs_Code">17.0.0</code> (<a class="vocs_Anchor" href="/ensip/15#versions">Versions</a>)<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Normalization is a living specification and should use the latest stable version of Unicode.</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/derive/output/spec.json" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><code class="vocs_Code">spec.json</code></a> contains all <a class="vocs_Anchor" href="/ensip/15#description-of-specjson">necessary data</a> for normalization.</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/derive/output/nf.json" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><code class="vocs_Code">nf.json</code></a> contains all <a class="vocs_Anchor" href="/ensip/15#description-of-nfjson">necessary data</a> for <a class="vocs_Anchor" href="https://unicode.org/reports/tr15/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Unicode Normalization Forms</a> NFC and NFD.</li>
+</ul>
+<h3 class="vocs_H3 vocs_Heading"><div id="definitions" class="vocs_Heading_slugTarget"></div>Definitions<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#definitions" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h3>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Terms in <strong class="vocs_Strong">bold</strong> throughout this document correspond with <a class="vocs_Anchor" href="/ensip/15#description-of-specjson">components of <code class="vocs_Code">spec.json</code></a>.</li>
+<li class="vocs_ListItem">A string is a sequence of Unicode codepoints.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">&quot;abc&quot;</code> is <code class="vocs_Code">61 62 63</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">An <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr51/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Unicode emoji</a> is a <a class="vocs_Anchor" href="https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">single entity</a> composed of one or more codepoints:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">An <strong class="vocs_Strong">Emoji Sequence</strong> is the preferred form of an emoji, resulting from input that <a class="vocs_Anchor" href="/ensip/15#tokenize">tokenized</a> into an <code class="vocs_Code">Emoji</code> token.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">💩︎︎ [1F4A9]</code> → <code class="vocs_Code">Emoji[1F4A9 FE0F]</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">1F4A9 FE0F</code> is the <strong class="vocs_Strong">Emoji Sequence</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#description-of-specjson"><code class="vocs_Code">spec.json</code></a> contains the complete <a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/emoji.md" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">list of valid</a> <strong class="vocs_Strong">Emoji Sequences</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#derivation">Derivation</a> defines which emoji are normalizable.</li>
+<li class="vocs_ListItem">Not all Unicode emoji are valid.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">‼ [203C] double exclamation mark</code> → <em>error: Disallowed character</em></li>
+<li class="vocs_ListItem"><code class="vocs_Code">🈁 [1F201] Japanese “here” button</code> → <code class="vocs_Code">Text[&quot;ココ&quot;]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">An <strong class="vocs_Strong">Emoji Sequence</strong> may contain characters that are disallowed:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">👩‍❤️‍👨 [1F469 200D 2764 FE0F 200D 1F468] couple with heart: woman, man</code> — contains ZWJ</li>
+<li class="vocs_ListItem"><code class="vocs_Code">#️⃣ [23 FE0F 20E3] keycap: #</code> — contains <code class="vocs_Code">23 (#)</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">🏴󠁧󠁢󠁥󠁮󠁧󠁿 [1F3F4 E0067 E0062 E0065 E006E E0067 E007F]</code> — contains <code class="vocs_Code">E00XX</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">An <strong class="vocs_Strong">Emoji Sequence</strong> may contain other emoji:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">❤️ [2764 FE0F] red heart</code> is a substring of <code class="vocs_Code">❤️‍🔥 [2764 FE0F 200D 1F525] heart on fire</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Single-codepoint emoji may have various <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr51/#Presentation_Style" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">presentation styles</a> on input:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Default: <code class="vocs_Code">❤ [2764]</code></li>
+<li class="vocs_ListItem">Text: <code class="vocs_Code">❤︎ [2764 FE0E]</code></li>
+<li class="vocs_ListItem">Emoji: <code class="vocs_Code">❤️ [2764 FE0F]</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">However, these all <a class="vocs_Anchor" href="/ensip/15#tokenize">tokenize</a> to the same <strong class="vocs_Strong">Emoji Sequence</strong>.</li>
+<li class="vocs_ListItem">All <strong class="vocs_Strong">Emoji Sequence</strong> have explicit emoji-presentation.</li>
+<li class="vocs_ListItem">The convention of ignoring presentation is difficult to change because:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Presentation characters (<code class="vocs_Code">FE0F</code> and <code class="vocs_Code">FE0E</code>) are <strong class="vocs_Strong">Ignored</strong></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor vocs_Link vocs_Link_accent" href="/ensip/1" data-discover="true">ENSIP-1</a> did not treat emoji differently from text</li>
+<li class="vocs_ListItem">Registration hashes are immutable</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#annex-beautification">Beautification</a> can be used to restore emoji-presentation in normalized names.</li>
+</ul>
+</li>
+</ul>
+<h3 class="vocs_H3 vocs_Heading"><div id="algorithm" class="vocs_Heading_slugTarget"></div>Algorithm<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#algorithm" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h3>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Normalization is the process of canonicalizing a name before for <a class="vocs_Anchor vocs_Link vocs_Link_accent" href="/ensip/1#namehash-algorithm" data-discover="true">hashing</a>.</li>
+<li class="vocs_ListItem">It is idempotent: applying normalization multiple times produces the same result.</li>
+<li class="vocs_ListItem">For user convenience, leading and trailing whitespace should be trimmed before normalization, as all whitespace codepoints are disallowed.  Inner characters should remain unmodified.</li>
+<li class="vocs_ListItem">No other string transformations (like case-folding) should be applied to the input.</li>
+</ul>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#split">Split</a> the name into <a class="vocs_Anchor vocs_Link vocs_Link_accent" href="/ensip/1#name-syntax" data-discover="true">labels</a>.</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#normalize">Normalize</a> each label.</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#join">Join</a> the labels together into a name again.</li>
+</ol>
+<h3 class="vocs_H3 vocs_Heading"><div id="normalize" class="vocs_Heading_slugTarget"></div>Normalize<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#normalize" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h3>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#tokenize">Tokenize</a> — transform the label into <code class="vocs_Code">Text</code> and <code class="vocs_Code">Emoji</code> tokens.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">If there are no tokens, the label cannot be normalized.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Apply <a class="vocs_Anchor" href="https://unicode.org/reports/tr15/#Norm_Forms" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">NFC</a> to each <code class="vocs_Code">Text</code> token.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">Text[&quot;à&quot;]</code> → <code class="vocs_Code">[61 300] → [E0]</code> → <code class="vocs_Code">Text[&quot;à&quot;]</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Strip <code class="vocs_Code">FE0F</code> from each <code class="vocs_Code">Emoji</code> token.</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#validate">Validate</a> — check if the tokens are valid and obtain the <strong class="vocs_Strong">Label Type</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">The <strong class="vocs_Strong">Label Type</strong> and <strong class="vocs_Strong">Restricted</strong> state may be presented to user for additional security.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Concatenate the tokens together.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Return the normalized label.</li>
+</ul>
+</li>
+</ol>
+<p class="vocs_Paragraph">Examples:</p>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;_$A&quot; [5F 24 41]</code> → <code class="vocs_Code">&quot;_$a&quot; [5F 24 61]</code> — <em>ASCII</em></li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;E︎̃&quot; [45 FE0E 303]</code> → <code class="vocs_Code">&quot;ẽ&quot; [1EBD]</code> — <em>Latin</em></li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;𓆏🐸&quot; [1318F 1F438]</code> → <code class="vocs_Code">&quot;𓆏🐸&quot; [1318F 1F438]</code> — <em>Restricted: Egyp</em></li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;nı̇ck&quot; [6E 131 307 63 6B]</code> → <em>error: Disallowed character</em></li>
+</ol>
+<h3 class="vocs_H3 vocs_Heading"><div id="tokenize" class="vocs_Heading_slugTarget"></div>Tokenize<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#tokenize" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h3>
+<p class="vocs_Paragraph">Convert a label into a list of <code class="vocs_Code">Text</code> and <code class="vocs_Code">Emoji</code> tokens, each with a payload of codepoints.  The complete list of character types and <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">emoji sequences</a> can be found in <a class="vocs_Anchor" href="/ensip/15#description-of-specjson"><code class="vocs_Code">spec.json</code></a>.</p>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem">Allocate an empty codepoint buffer.</li>
+<li class="vocs_ListItem">Find the longest <strong class="vocs_Strong">Emoji Sequence</strong> that matches the remaining input.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">👨🏻‍💻 [1F468 1F3FB 200D 1F4BB]</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Match (1): <code class="vocs_Code">👨️ [1F468] man</code></li>
+<li class="vocs_ListItem">Match (2): <code class="vocs_Code">👨🏻 [1F468 1F3FB] man: light skin tone</code></li>
+<li class="vocs_ListItem">Match (4): <code class="vocs_Code">👨🏻‍💻 [1F468 1F3FB 200D 1F4BB] man technologist: light skin tone</code> — longest match!</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><code class="vocs_Code">FE0F</code> is optional from the input during matching.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">👨‍❤️‍👨 [1F468 200D 2764 FE0F 200D 1F468]</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Match: <code class="vocs_Code">1F468 200D 2764 FE0F 200D 1F468</code> — fully-qualified</li>
+<li class="vocs_ListItem">Match: <code class="vocs_Code">1F468 200D 2764 200D 1F468</code> — missing <code class="vocs_Code">FE0F</code></li>
+<li class="vocs_ListItem">No match: <code class="vocs_Code">1F468 FE0F 200D 2764 FE0F 200D 1F468</code> — extra <code class="vocs_Code">FE0F</code></li>
+<li class="vocs_ListItem">No match: <code class="vocs_Code">1F468 200D 2764 FE0F FE0F 200D 1F468</code> — has (2) <code class="vocs_Code">FE0F</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">This is equivalent to <code class="vocs_Code">/^(emoji1|emoji2|...)/</code> where <code class="vocs_Code">\uFE0F</code> is replaced with <code class="vocs_Code">\uFE0F?</code> and <code class="vocs_Code">*</code> is replaced with <code class="vocs_Code">\x2A</code>.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">If an <strong class="vocs_Strong">Emoji Sequence</strong> is found:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">If the buffer is nonempty, emit a <code class="vocs_Code">Text</code> token, and clear the buffer.</li>
+<li class="vocs_ListItem">Emit an <code class="vocs_Code">Emoji</code> token with the fully-qualified matching sequence.</li>
+<li class="vocs_ListItem">Remove the matched sequence from the input.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Otherwise:<!-- -->
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem">Remove the leading codepoint from the input.</li>
+<li class="vocs_ListItem">Determine the character type:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">If <strong class="vocs_Strong">Valid</strong>, append the codepoint to the buffer.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">This set can be precomputed from the union of characters in all groups and their NFD decompositions.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">If <strong class="vocs_Strong">Mapped</strong>, append the corresponding mapped codepoint(s) to the buffer.</li>
+<li class="vocs_ListItem">If <strong class="vocs_Strong">Ignored</strong>, do nothing.</li>
+<li class="vocs_ListItem">Otherwise, the label cannot be normalized.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li class="vocs_ListItem">Repeat until all the input is consumed.</li>
+<li class="vocs_ListItem">If the buffer is nonempty, emit a final <code class="vocs_Code">Text</code> token with its contents.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Return the list of emitted tokens.</li>
+</ul>
+</li>
+</ol>
+<p class="vocs_Paragraph">Examples:</p>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;xyz👨🏻&quot; [78 79 7A 1F468 1F3FB]</code> → <code class="vocs_Code">Text[&quot;xyz&quot;]</code> + <code class="vocs_Code">Emoji[&quot;👨🏻&quot;]</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;A💩︎︎b&quot; [41 FE0E 1F4A9 FE0E FE0E 62]</code> → <code class="vocs_Code">Text[&quot;a&quot;]</code> + <code class="vocs_Code">Emoji[&quot;💩️&quot;]</code> + <code class="vocs_Code">Text[&quot;b&quot;]</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;a™️&quot; [61 2122 FE0F]</code> → <code class="vocs_Code">Text[&quot;atm&quot;]</code></li>
+</ol>
+<h3 class="vocs_H3 vocs_Heading"><div id="validate" class="vocs_Heading_slugTarget"></div>Validate<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#validate" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h3>
+<p class="vocs_Paragraph">Given a list of <code class="vocs_Code">Emoji</code> and <code class="vocs_Code">Text</code> tokens, determine if the label is valid and return the <strong class="vocs_Strong">Label Type</strong>.  If any assertion fails, the name cannot be normalized.</p>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem">If only <code class="vocs_Code">Emoji</code> tokens:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Return <code class="vocs_Code">&quot;Emoji&quot;</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">If a single <code class="vocs_Code">Text</code> token and every characters is ASCII (<code class="vocs_Code">00..7F</code>):<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">5F (_) LOW LINE</code> can only occur at the start.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Must match <code class="vocs_Code">/^_*[^_]*$/</code></li>
+<li class="vocs_ListItem">Examples: <code class="vocs_Code">&quot;___&quot;</code> and <code class="vocs_Code">&quot;__abc&quot;</code> are valid, <code class="vocs_Code">&quot;abc__&quot;</code> and <code class="vocs_Code">&quot;_abc_&quot;</code> are invalid.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">The 3rd and 4th characters must not both be <code class="vocs_Code">2D (-) HYPHEN-MINUS</code>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Must not match <code class="vocs_Code">/^..--/</code></li>
+<li class="vocs_ListItem">Examples: <code class="vocs_Code">&quot;ab-c&quot;</code> and <code class="vocs_Code">&quot;---a&quot;</code>are valid, <code class="vocs_Code">&quot;xn--&quot;</code> and <code class="vocs_Code">----</code> are invalid.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Return <code class="vocs_Code">&quot;ASCII&quot;</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">The label is free of <strong class="vocs_Strong">Fenced</strong> and <strong class="vocs_Strong">Combining Mark</strong> characters, and not confusable.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Concatenate all the tokens together.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">5F (_) LOW LINE</code> can only occur at the start.</li>
+<li class="vocs_ListItem">The first and last characters cannot be <strong class="vocs_Strong">Fenced</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Examples: <code class="vocs_Code">&quot;a’s&quot;</code> and <code class="vocs_Code">&quot;a・a&quot;</code> are valid, <code class="vocs_Code">&quot;’85&quot;</code> and <code class="vocs_Code">&quot;joneses’&quot;</code> and <code class="vocs_Code">&quot;・a・&quot;</code> are invalid.</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Fenced</strong> characters cannot be contiguous.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Examples: <code class="vocs_Code">&quot;a・a’s&quot;</code> is valid, <code class="vocs_Code">&quot;6’0’’&quot;</code> and <code class="vocs_Code">&quot;a・・a&quot;</code> are invalid.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">The first character of every <code class="vocs_Code">Text</code> token must not be a <strong class="vocs_Strong">Combining Mark</strong>.</li>
+<li class="vocs_ListItem">Concatenate the <code class="vocs_Code">Text</code> tokens together.</li>
+<li class="vocs_ListItem">Find the first <strong class="vocs_Strong">Group</strong> that contain every text character:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">If no group is found, the label cannot be normalized.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">If the group is not <strong class="vocs_Strong">CM Whitelisted</strong>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Apply NFD to the concatenated text characters.</li>
+<li class="vocs_ListItem">For every contiguous sequence of <strong class="vocs_Strong">NSM</strong> characters:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Each character must be unique.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">&quot;x̀̀&quot; [78 300 300]</code> has (2) grave accents.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">The number of <strong class="vocs_Strong">NSM</strong> characters cannot exceed <strong class="vocs_Strong">Maximum NSM</strong> (4).<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code"> &quot;إؐؑؒؓؔ&quot;‎ [625 610 611 612 613 614]</code> has (6) <strong class="vocs_Strong">NSM</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#wholes">Wholes</a> — check if text characters form a confusable.</li>
+<li class="vocs_ListItem">The label is valid.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Return the name of the group as the <strong class="vocs_Strong">Label Type</strong>.</li>
+</ul>
+</li>
+</ol>
+<p class="vocs_Paragraph">Examples:</p>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem"><code class="vocs_Code">Emoji[&quot;💩️&quot;]</code> + <code class="vocs_Code">Emoji[&quot;💩️&quot;]</code> → <code class="vocs_Code">&quot;Emoji&quot;</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">Text[&quot;abc$123&quot;]</code> → <code class="vocs_Code">&quot;ASCII&quot;</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">Emoji[&quot;🚀️&quot;]</code> + <code class="vocs_Code">Text[&quot;à&quot;]</code> → <code class="vocs_Code">&quot;Latin&quot;</code></li>
+</ol>
+<h3 class="vocs_H3 vocs_Heading"><div id="wholes" class="vocs_Heading_slugTarget"></div>Wholes<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#wholes" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h3>
+<p class="vocs_Paragraph">A label is <a class="vocs_Anchor" href="https://unicode.org/reports/tr39/#def_whole_script_confusables" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">whole-script confusable</a> if a similarly-looking valid label can be constructed using one alternative character from a different group.  The complete list of <strong class="vocs_Strong">Whole Confusables</strong> can be found in <a class="vocs_Anchor" href="/ensip/15#description-of-specjson"><code class="vocs_Code">spec.json</code></a>.  Each <strong class="vocs_Strong">Whole Confusable</strong> has a set of non-confusing characters (<code class="vocs_Code">&quot;valid&quot;</code>) and a set of confusing characters (<code class="vocs_Code">&quot;confused&quot;</code>) where each character may be the member of one or more groups.</p>
+<p class="vocs_Paragraph">Example: <strong class="vocs_Strong">Whole Confusable</strong> for <code class="vocs_Code">&quot;g&quot;</code></p>
+<table class="vocs_Table"><thead><tr class="vocs_TableRow"><th style="text-align:center" class="vocs_TableHeader">Type</th><th style="text-align:right" class="vocs_TableHeader">Code</th><th style="text-align:center" class="vocs_TableHeader">Form</th><th style="text-align:left" class="vocs_TableHeader">Character</th><th style="text-align:center" class="vocs_TableHeader">Latn</th><th style="text-align:center" class="vocs_TableHeader">Hani</th><th style="text-align:center" class="vocs_TableHeader">Japn</th><th style="text-align:center" class="vocs_TableHeader">Kore</th><th style="text-align:center" class="vocs_TableHeader">Armn</th><th style="text-align:center" class="vocs_TableHeader">Cher</th><th style="text-align:center" class="vocs_TableHeader">Lisu</th></tr></thead><tbody><tr class="vocs_TableRow"><td style="text-align:center" class="vocs_TableCell">valid</td><td style="text-align:right" class="vocs_TableCell"><code class="vocs_Code">67</code></td><td style="text-align:center" class="vocs_TableCell"><code class="vocs_Code">g</code></td><td style="text-align:left" class="vocs_TableCell">LATIN SMALL LETTER G</td><td style="text-align:center" class="vocs_TableCell">A</td><td style="text-align:center" class="vocs_TableCell">A</td><td style="text-align:center" class="vocs_TableCell">A</td><td style="text-align:center" class="vocs_TableCell">A</td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td></tr><tr class="vocs_TableRow"><td style="text-align:center" class="vocs_TableCell">confused</td><td style="text-align:right" class="vocs_TableCell"><code class="vocs_Code">581</code></td><td style="text-align:center" class="vocs_TableCell"><code class="vocs_Code">ց</code></td><td style="text-align:left" class="vocs_TableCell">ARMENIAN SMALL LETTER CO</td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell">B</td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td></tr><tr class="vocs_TableRow"><td style="text-align:center" class="vocs_TableCell">confused</td><td style="text-align:right" class="vocs_TableCell"><code class="vocs_Code">13C0</code></td><td style="text-align:center" class="vocs_TableCell"><code class="vocs_Code">Ꮐ</code></td><td style="text-align:left" class="vocs_TableCell">CHEROKEE LETTER NAH</td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell">C</td><td style="text-align:center" class="vocs_TableCell"></td></tr><tr class="vocs_TableRow"><td style="text-align:center" class="vocs_TableCell">confused</td><td style="text-align:right" class="vocs_TableCell"><code class="vocs_Code">13F3</code></td><td style="text-align:center" class="vocs_TableCell"><code class="vocs_Code">Ᏻ</code></td><td style="text-align:left" class="vocs_TableCell">CHEROKEE LETTER YU</td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell">C</td><td style="text-align:center" class="vocs_TableCell"></td></tr><tr class="vocs_TableRow"><td style="text-align:center" class="vocs_TableCell">confused</td><td style="text-align:right" class="vocs_TableCell"><code class="vocs_Code">A4D6</code></td><td style="text-align:center" class="vocs_TableCell"><code class="vocs_Code">ꓖ</code></td><td style="text-align:left" class="vocs_TableCell">LISU LETTER GA</td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell"></td><td style="text-align:center" class="vocs_TableCell">D</td></tr></tbody></table>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem">Allocate an empty character buffer.</li>
+<li class="vocs_ListItem">Start with the set of <strong class="vocs_Strong">ALL</strong> groups.</li>
+<li class="vocs_ListItem">For each unique character in the label:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">If the character is <strong class="vocs_Strong">Confused</strong> (a member of a <strong class="vocs_Strong">Whole Confusable</strong>):<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Retain groups with <strong class="vocs_Strong">Whole Confusable</strong> characters excluding the <strong class="vocs_Strong">Confusable Extent</strong> of the matching <strong class="vocs_Strong">Confused</strong> character.</li>
+<li class="vocs_ListItem">If no groups remain, the label is not confusable.</li>
+<li class="vocs_ListItem">The <strong class="vocs_Strong">Confusable Extent</strong> is the fully-connected graph formed from different groups with the same confusable and different confusables of the same group.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">The mapping from <strong class="vocs_Strong">Confused</strong> to <strong class="vocs_Strong">Confusable Extent</strong> can be precomputed.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">In the table above, <strong class="vocs_Strong">Whole Confusable</strong> for <code class="vocs_Code">&quot;g&quot;</code>, the rectangle formed by each capital letter is a <strong class="vocs_Strong">Confusable Extent</strong>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">A</code> is [<code class="vocs_Code">g</code>] ⊗ [<em>Latin</em>, <em>Han</em>, <em>Japanese</em>, <em>Korean</em>]</li>
+<li class="vocs_ListItem"><code class="vocs_Code">B</code> is [<code class="vocs_Code">ց</code>] ⊗ [<em>Armn</em>]</li>
+<li class="vocs_ListItem"><code class="vocs_Code">C</code> is [<code class="vocs_Code">Ꮐ</code>, <code class="vocs_Code">Ᏻ</code>] ⊗ [<em>Cher</em>]</li>
+<li class="vocs_ListItem"><code class="vocs_Code">D</code> is [<code class="vocs_Code">ꓖ</code>] ⊗ [<em>Lisu</em>]</li>
+</ul>
+</li>
+<li class="vocs_ListItem">A <strong class="vocs_Strong">Confusable Extent</strong> can span multiple characters and multiple groups.  Consider the (incomplete) <strong class="vocs_Strong">Whole Confusable</strong> for <code class="vocs_Code">&quot;o&quot;</code>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">6F (o) LATIN SMALL LETTER O</code> → <em>Latin</em>, <em>Han</em>, <em>Japanese</em>, and <em>Korean</em></li>
+<li class="vocs_ListItem"><code class="vocs_Code">3007 (〇) IDEOGRAPHIC NUMBER ZERO</code> → <em>Han</em>, <em>Japanese</em>, <em>Korean</em>, and <em>Bopomofo</em></li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Confusable Extent</strong> is [<code class="vocs_Code">o</code>, <code class="vocs_Code">〇</code>] ⊗ [<em>Latin</em>, <em>Han</em>, <em>Japanese</em>, <em>Korean</em>, <em>Bopomofo</em>]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">If the character is <strong class="vocs_Strong">Unique</strong>, the label is not confusable.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">This set can be precomputed from characters that appear in exactly one group and are not <strong class="vocs_Strong">Confused</strong>.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Otherwise:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Append the character to the buffer.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">If any <strong class="vocs_Strong">Confused</strong> characters were found:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">If there are no buffered characters, the label is confusable.</li>
+<li class="vocs_ListItem">If any of the remaining groups contain all of the buffered characters, the label is confusable.</li>
+<li class="vocs_ListItem">Example: <code class="vocs_Code">&quot;0х&quot; [30 445]</code>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem"><code class="vocs_Code">30 (0) DIGIT ZERO</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Not <strong class="vocs_Strong">Confused</strong> or <strong class="vocs_Strong">Unique</strong>, add to buffer.</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><code class="vocs_Code">445 (х) CYRILLIC SMALL LETTER HA</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><strong class="vocs_Strong">Confusable Extent</strong> is [<code class="vocs_Code">х</code>, <code class="vocs_Code">4B3 (ҳ) CYRILLIC SMALL LETTER HA WITH DESCENDER</code>] ⊗ [<em>Cyrillic</em>]</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Whole Confusable</strong> excluding the extent is [<code class="vocs_Code">78 (x) LATIN SMALL LETTER X</code>, ...] → [<em>Latin</em>, ...]</li>
+<li class="vocs_ListItem">Remaining groups: <strong class="vocs_Strong">ALL</strong> ∩ [<em>Latin</em>, ...] → [<em>Latin</em>, ...]</li>
+</ul>
+</li>
+<li class="vocs_ListItem">There was (1) buffered character:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><em>Latin</em> also contains <code class="vocs_Code">30</code> → <code class="vocs_Code">&quot;0x&quot; [30 78]</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">The label is confusable.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">The label is not confusable.</li>
+</ol>
+<p class="vocs_Paragraph">A label composed of confusable characters isn&#x27;t necessarily confusable.</p>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">&quot;тӕ&quot; [442 4D5]</code>
+<ol class="vocs_List vocs_List_ordered">
+<li class="vocs_ListItem"><code class="vocs_Code">442 (т) CYRILLIC SMALL LETTER TE</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><strong class="vocs_Strong">Confusable Extent</strong> is [<code class="vocs_Code">т</code>] ⊗ [<em>Cyrillic</em>]</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Whole Confusable</strong> excluding the extent is [<code class="vocs_Code">3C4 (τ) GREEK SMALL LETTER TAU</code>] → [<em>Greek</em>]</li>
+<li class="vocs_ListItem">Remaining groups: <strong class="vocs_Strong">ALL</strong> ∩ [<em>Greek</em>] → [<em>Greek</em>]</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><code class="vocs_Code">4D5 (ӕ) CYRILLIC SMALL LIGATURE A IE</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><strong class="vocs_Strong">Confusable Extent</strong> is [<code class="vocs_Code">ӕ</code>] ⊗ [<em>Greek</em>]</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Whole Confusable</strong> excluding the extent is [<code class="vocs_Code">E6 (æ) LATIN SMALL LETTER AE</code>] → [<em>Latin</em>]</li>
+<li class="vocs_ListItem">Remaining groups: [<em>Greek</em>] ∩ [<em>Latin</em>] → ∅</li>
+</ul>
+</li>
+<li class="vocs_ListItem">No groups remain so the label is not confusable.</li>
+</ol>
+</li>
+</ul>
+<h3 class="vocs_H3 vocs_Heading"><div id="split" class="vocs_Heading_slugTarget"></div>Split<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#split" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h3>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Partition a name into labels, separated by <code class="vocs_Code">2D (.) FULL STOP</code>, and return the resulting array.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">&quot;abc.123.eth&quot;</code> → <code class="vocs_Code">[&quot;abc&quot;, &quot;123&quot;, &quot;eth&quot;]</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">The empty string is 0-labels: <code class="vocs_Code">&quot;&quot;</code> → <code class="vocs_Code">[]</code></li>
+</ul>
+<h3 class="vocs_H3 vocs_Heading"><div id="join" class="vocs_Heading_slugTarget"></div>Join<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#join" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h3>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Assemble an array of labels into a name, inserting <code class="vocs_Code">2D (.) FULL STOP</code> between each label, and return the resulting string.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">[&quot;abc&quot;, &quot;123&quot;, &quot;eth&quot;]</code> → <code class="vocs_Code">&quot;abc.123.eth&quot;</code></li>
+</ul>
+</li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="description-of-specjson" class="vocs_Heading_slugTarget"></div>Description of <code class="vocs_Code">spec.json</code><a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#description-of-specjson" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><strong class="vocs_Strong">Groups</strong> (<code class="vocs_Code">&quot;groups&quot;</code>) — <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">groups</a> of characters that can constitute a label<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;name&quot;</code> — ASCII name of the group (or abbreviation if <strong class="vocs_Strong">Restricted</strong>)<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Examples: <em>Latin</em>, <em>Japanese</em>, <em>Egyp</em></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Restricted</strong> (<code class="vocs_Code">&quot;restricted&quot;</code>) — <strong class="vocs_Strong"><code class="vocs_Code">true</code></strong> if <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr31#Table_Candidate_Characters_for_Exclusion_from_Identifiers" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Excluded</a> or <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr31/#Table_Limited_Use_Scripts" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Limited-Use</a> script<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Examples: <em>Latin</em> → <strong class="vocs_Strong"><code class="vocs_Code">false</code></strong>, <em>Egyp</em> → <strong class="vocs_Strong"><code class="vocs_Code">true</code></strong></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;primary&quot;</code> — subset of characters that define the group<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Examples: <code class="vocs_Code">&quot;a&quot;</code> → <em>Latin</em>, <code class="vocs_Code">&quot;あ&quot;</code> → <em>Japanese</em>, <code class="vocs_Code">&quot;𓀀&quot;</code> → <em>Egyp</em></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;secondary&quot;</code> — subset of characters included with the group<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">&quot;0&quot;</code> → <em>Common</em> but mixable with <em>Latin</em></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">CM Whitelist(ed)</strong> (<code class="vocs_Code">&quot;cm&quot;</code>) — (optional) set of allowed compound sequences in NFC<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Each compound sequence is a character followed by one or more <strong class="vocs_Strong">Combining Marks</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">à̀̀</code> → <code class="vocs_Code">E0 300 300</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Currently, every group that is <strong class="vocs_Strong">CM Whitelist</strong> has zero compound sequences.</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">CM Whitelisted</strong> is effectively <strong class="vocs_Strong"><code class="vocs_Code">true</code></strong> if <code class="vocs_Code">[]</code> otherwise <strong class="vocs_Strong"><code class="vocs_Code">false</code></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Ignored</strong> (<code class="vocs_Code">&quot;ignored&quot;</code>) — <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">characters</a> that are ignored during normalization<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">34F (�) COMBINING GRAPHEME JOINER</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Mapped</strong> (<code class="vocs_Code">&quot;mapped&quot;</code>) — characters that are mapped to a sequence of <strong class="vocs_Strong">valid</strong> characters<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">41 (A) LATIN CAPITAL LETTER A</code> → <code class="vocs_Code">[61 (a) LATIN SMALL LETTER A]</code></li>
+<li class="vocs_ListItem">Example: <code class="vocs_Code">2165 (Ⅵ) ROMAN NUMERAL SIX</code> → <code class="vocs_Code">[76 (v) LATIN SMALL LETTER V, 69 (i) LATIN SMALL LETTER I]</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Whole Confusable</strong> (<code class="vocs_Code">&quot;wholes&quot;</code>) — groups of characters that look similar<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;valid&quot;</code> — subset of confusable characters that are allowed<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">34 (4) DIGIT FOUR</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Confused</strong> (<code class="vocs_Code">&quot;confused&quot;</code>) — subset of confusable characters that confuse<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">13CE (Ꮞ) CHEROKEE LETTER SE</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Fenced</strong> (<code class="vocs_Code">&quot;fenced&quot;</code>) — <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">characters</a> that cannot be first, last, or contiguous<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">2044 (⁄) FRACTION SLASH</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Emoji Sequence(s)</strong> (<code class="vocs_Code">&quot;emoji&quot;</code>) — valid <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">emoji sequences</a>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">👨‍💻 [1F468 200D 1F4BB] man technologist</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Combining Marks / CM</strong> (<code class="vocs_Code">&quot;cm&quot;</code>) — <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">characters</a> that are <a class="vocs_Anchor" href="https://unicode.org/faq/char_combmark.html" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Combining Marks</a></li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Non-spacing Marks / NSM</strong> (<code class="vocs_Code">&quot;nsm&quot;</code>) — valid <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">subset</a> of <strong class="vocs_Strong">CM</strong> with general category (<code class="vocs_Code">&quot;Mn&quot;</code> or <code class="vocs_Code">&quot;Me&quot;</code>)</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Maximum NSM</strong> (<code class="vocs_Code">&quot;nsm_max&quot;</code>) — maximum sequence length of unique <strong class="vocs_Strong">NSM</strong></li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Should Escape</strong> (<code class="vocs_Code">&quot;escape&quot;</code>) — <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">characters</a> that shouldn&#x27;t be printed</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">NFC Check</strong> (<code class="vocs_Code">&quot;nfc_check&quot;</code>) — valid <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">subset</a> of characters that <a class="vocs_Anchor" href="https://unicode.org/reports/tr15/#NFC_QC_Optimization" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">may require NFC</a></li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="description-of-nfjson" class="vocs_Heading_slugTarget"></div>Description of <code class="vocs_Code">nf.json</code><a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#description-of-nfjson" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;decomp&quot;</code> — <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr44/tr44-30.html#Character_Decomposition_Mappings" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">mapping</a> from a composed character to a sequence of (partially)-decomposed characters<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr44/tr44-30.html#UnicodeData.txt" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><code class="vocs_Code">UnicodeData.txt</code></a> where <code class="vocs_Code">Decomposition_Mapping</code> exists and does not have a <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr44/tr44-30.html#Formatting_Tags_Table" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">formatting tag</a></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;exclusions&quot;</code> — set of characters for which the <code class="vocs_Code">&quot;decomp&quot;</code> mapping is not applied when forming a composition<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr44/tr44-30.html#CompositionExclusions.txt" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><code class="vocs_Code">CompositionExclusions.txt</code></a></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;ranks&quot;</code> — sets of characters with increasing <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr44/tr44-30.html#Canonical_Combining_Class_Values" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><code class="vocs_Code">Canonical_Combining_Class</code></a>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr44/tr44-30.html#UnicodeData.txt" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><code class="vocs_Code">UnicodeData.txt</code></a> grouped by <code class="vocs_Code">Canonical_Combining_Class</code></li>
+<li class="vocs_ListItem">Class <code class="vocs_Code">0</code> is not included</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;qc&quot;</code> — set of characters with property <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr44/tr44-30.html#Decompositions_and_Normalization" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><code class="vocs_Code">NFC_QC</code></a> of value <code class="vocs_Code">N</code> or <code class="vocs_Code">M</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr44/tr44-30.html#DerivedNormalizationProps.txt" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><code class="vocs_Code">DerivedNormalizationProps.txt</code></a></li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">NFC Check</strong> (from <a class="vocs_Anchor" href="/ensip/15#description-of-specjson"><code class="vocs_Code">spec.json</code></a>) is a subset of this set</li>
+</ul>
+</li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="derivation" class="vocs_Heading_slugTarget"></div>Derivation<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#derivation" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://unicode.org/Public/idna/15.1.0/IdnaMappingTable.txt" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">IDNA 2003</a>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">UseSTD3ASCIIRules</code> is <strong class="vocs_Strong"><code class="vocs_Code">true</code></strong></li>
+<li class="vocs_ListItem"><code class="vocs_Code">VerifyDnsLength</code> is <strong class="vocs_Strong"><code class="vocs_Code">false</code></strong></li>
+<li class="vocs_ListItem"><code class="vocs_Code">Transitional_Processing</code> is <strong class="vocs_Strong"><code class="vocs_Code">false</code></strong></li>
+<li class="vocs_ListItem">The following <a class="vocs_Anchor" href="https://unicode.org/reports/tr46/#Table_Deviation_Characters" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">deviations</a> are <strong class="vocs_Strong">valid</strong>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">DF (ß) LATIN SMALL LETTER SHARP S</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">3C2 (ς) GREEK SMALL LETTER FINAL SIGMA</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem"><code class="vocs_Code">CheckHyphens</code> is <strong class="vocs_Strong"><code class="vocs_Code">false</code></strong> (<a class="vocs_Anchor" href="https://url.spec.whatwg.org/#idna" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">WHATWG URL Spec § 3.3</a>)</li>
+<li class="vocs_ListItem"><code class="vocs_Code">CheckBidi</code> is <strong class="vocs_Strong"><code class="vocs_Code">false</code></strong></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://datatracker.ietf.org/doc/html/rfc5892#appendix-A.1" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">ContextJ</a>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">200C (�) ZERO WIDTH NON-JOINER</code> (ZWNJ) is <strong class="vocs_Strong">disallowed everywhere</strong>.</li>
+<li class="vocs_ListItem"><code class="vocs_Code">200D (�) ZERO WIDTH JOINER</code> (ZWJ) is <strong class="vocs_Strong">only allowed</strong> in emoji sequences.</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://datatracker.ietf.org/doc/html/rfc5892#appendix-A.3" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">ContextO</a>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">B7 (·) MIDDLE DOT</code> is <strong class="vocs_Strong">disallowed</strong>.</li>
+<li class="vocs_ListItem"><code class="vocs_Code">375 (͵) GREEK LOWER NUMERAL SIGN</code> is <strong class="vocs_Strong">disallowed</strong>.</li>
+<li class="vocs_ListItem"><code class="vocs_Code">5F3 (׳) HEBREW PUNCTUATION GERESH</code> and <code class="vocs_Code">5F4 (״) HEBREW PUNCTUATION GERSHAYIM</code> are <em>Greek</em>.</li>
+<li class="vocs_ListItem"><code class="vocs_Code">30FB (・) KATAKANA MIDDLE DOT</code> is <strong class="vocs_Strong">Fenced</strong> and <em>Han</em>, <em>Japanese</em>, <em>Korean</em>, and <em>Bopomofo</em>.</li>
+<li class="vocs_ListItem">Some <a class="vocs_Anchor" href="https://en.wikipedia.org/wiki/Arabic_numerals" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Extended Arabic Numerals</a> are <strong class="vocs_Strong">mapped</strong>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">6F0 (۰)</code> → <code class="vocs_Code">660 (٠) ARABIC-INDIC DIGIT ZERO</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">6F1 (۱)</code> → <code class="vocs_Code">661 (١) ARABIC-INDIC DIGIT ONE</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">6F2 (۲)</code> → <code class="vocs_Code">662 (٢) ARABIC-INDIC DIGIT TWO</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">6F3 (۳)</code> → <code class="vocs_Code">663 (٣) ARABIC-INDIC DIGIT THREE</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">6F7 (۷)</code> → <code class="vocs_Code">667 (٧) ARABIC-INDIC DIGIT SEVEN</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">6F8 (۸)</code> → <code class="vocs_Code">668 (٨) ARABIC-INDIC DIGIT EIGHT</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">6F9 (۹)</code> → <code class="vocs_Code">669 (٩) ARABIC-INDIC DIGIT NINE</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://datatracker.ietf.org/doc/html/rfc3492" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Punycode</a> is not decoded.</li>
+<li class="vocs_ListItem">The following ASCII characters are <strong class="vocs_Strong">valid</strong>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">24 ($) DOLLAR SIGN</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">5F (_) LOW LINE</code> with <a class="vocs_Anchor" href="/ensip/15#validate">restrictions</a></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Only label separator is <code class="vocs_Code">2E (.) FULL STOP</code>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">No character maps to this character.</li>
+<li class="vocs_ListItem">This simplifies name detection in unstructured text.</li>
+<li class="vocs_ListItem">The following alternatives are <strong class="vocs_Strong">disallowed</strong>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">3002 (。) IDEOGRAPHIC FULL STOP</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">FF0E (．) FULLWIDTH FULL STOP</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">FF61 (｡) HALFWIDTH IDEOGRAPHIC FULL STOP</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">Many characters</a> are <strong class="vocs_Strong">disallowed</strong> for various reasons:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Nearly all punctuation are <strong class="vocs_Strong">disallowed</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">589 (։) ARMENIAN FULL STOP</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">All parentheses and brackets are <strong class="vocs_Strong">disallowed</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">2997 (⦗) LEFT BLACK TORTOISE SHELL BRACKET</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Nearly all vocalization annotations are <strong class="vocs_Strong">disallowed</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">294 (ʔ) LATIN LETTER GLOTTAL STOP</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Obsolete, deprecated, and ancient characters are <strong class="vocs_Strong">disallowed</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">463 (ѣ) CYRILLIC SMALL LETTER YAT</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Combining, modifying, reversed, flipped, turned, and partial variations are <strong class="vocs_Strong">disallowed</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">218A (↊) TURNED DIGIT TWO</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">When multiple weights of the same character exist, the variant closest to &quot;heavy&quot; is selected and the rest <strong class="vocs_Strong">disallowed</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">🞡🞢🞣🞤✚🞥🞦🞧</code> → <code class="vocs_Code">271A (✚) HEAVY GREEK CROSS</code></li>
+<li class="vocs_ListItem">This occasionally selects an emoji.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: ✔️ or <code class="vocs_Code">2714 (✔︎) HEAVY CHECK MARK</code> is selected instead of <code class="vocs_Code">2713 (✓) CHECK MARK</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Many visually confusable characters are <strong class="vocs_Strong">disallowed</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">131 (ı) LATIN SMALL LETTER DOTLESS I</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Many ligatures, <em>n</em>-graphs, and <em>n</em>-grams are <strong class="vocs_Strong">disallowed.</strong>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">A74F (ꝏ) LATIN SMALL LETTER OO</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Many esoteric characters are <strong class="vocs_Strong">disallowed</strong>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">2376 (⍶) APL FUNCTIONAL SYMBOL ALPHA UNDERBAR</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Many hyphen-like characters are <strong class="vocs_Strong">mapped</strong> to <code class="vocs_Code">2D (-) HYPHEN-MINUS</code>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">2010 (‐) HYPHEN</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2011 (‑) NON-BREAKING HYPHEN</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2012 (‒) FIGURE DASH</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2013 (–) EN DASH</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2014 (—) EM DASH</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2015 (―) HORIZONTAL BAR</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2043 (⁃) HYPHEN BULLET</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2212 (−) MINUS SIGN</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">23AF (⎯) HORIZONTAL LINE EXTENSION</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">23E4 (⏤) STRAIGHTNESS</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">FE58 (﹘) SMALL EM DASH</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2E3A (⸺) TWO-EM DASH</code> → <code class="vocs_Code">&quot;--&quot;</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2E3B (⸻) THREE-EM DASH</code> → <code class="vocs_Code">&quot;---&quot;</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Characters are assigned to <strong class="vocs_Strong">Groups</strong> according to <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr24/#Script_Extensions_Def" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Unicode Script_Extensions</a>.</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Groups</strong> may contain <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">multiple scripts</a>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Only <em>Latin</em>, <em>Greek</em>, <em>Cyrillic</em>, <em>Han</em>, <em>Japanese</em>, and <em>Korean</em> have access to <em>Common</em> characters.</li>
+<li class="vocs_ListItem"><em>Latin</em>, <em>Greek</em>, <em>Cyrillic</em>, <em>Han</em>, <em>Japanese</em>, <em>Korean</em>, and <em>Bopomofo</em> only permit specific <strong class="vocs_Strong">Combining Mark</strong> sequences.</li>
+<li class="vocs_ListItem"><em>Han</em>, <em>Japanese</em>, and <em>Korean</em>  have access to <code class="vocs_Code">a-z</code>.</li>
+<li class="vocs_ListItem"><strong class="vocs_Strong">Restricted</strong> groups are always single-script.</li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr39/#Mixed_Script_Detection" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Unicode augmented script sets</a></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Scripts <em>Braille</em>, <em>Linear A</em>, <em>Linear B</em>, and <em>Signwriting</em> are <strong class="vocs_Strong">disallowed</strong>.</li>
+<li class="vocs_ListItem"><code class="vocs_Code">27 (&#x27;) APOSTROPHE</code> is <strong class="vocs_Strong">mapped</strong> to <code class="vocs_Code">2019 (’) RIGHT SINGLE QUOTATION MARK</code> for convenience.</li>
+<li class="vocs_ListItem">Ethereum symbol (<code class="vocs_Code">39E (Ξ) GREEK CAPITAL LETTER XI</code>) is case-folded and <em>Common</em>.</li>
+<li class="vocs_ListItem">Emoji:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">All emoji are <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr51/#def_fully_qualified_emoji" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">fully-qualified</a>.</li>
+<li class="vocs_ListItem">Digits (<code class="vocs_Code">0-9</code>) are <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">not emoji</a>.</li>
+<li class="vocs_ListItem">Emoji <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">mapped to non-emoji by IDNA</a> cannot be used as emoji.</li>
+<li class="vocs_ListItem">Emoji <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">disallowed by IDNA</a> with default text-presentation are <strong class="vocs_Strong">disabled</strong>:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">203C (‼️) double exclamation mark</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">2049 (⁉️) exclamation question mark </code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">Remaining emoji characters are marked as <strong class="vocs_Strong">disallowed</strong> (for text processing).</li>
+<li class="vocs_ListItem">All <code class="vocs_Code">RGI_Emoji_ZWJ_Sequence</code> are <strong class="vocs_Strong">enabled</strong>.</li>
+<li class="vocs_ListItem">All <code class="vocs_Code">Emoji_Keycap_Sequence</code> are <strong class="vocs_Strong">enabled</strong>.</li>
+<li class="vocs_ListItem">All <code class="vocs_Code">RGI_Emoji_Tag_Sequence</code> are <strong class="vocs_Strong">enabled</strong>.</li>
+<li class="vocs_ListItem">All <code class="vocs_Code">RGI_Emoji_Modifier_Sequence</code> are <strong class="vocs_Strong">enabled</strong>.</li>
+<li class="vocs_ListItem">All <code class="vocs_Code">RGI_Emoji_Flag_Sequence</code> are <strong class="vocs_Strong">enabled</strong>.</li>
+<li class="vocs_ListItem"><code class="vocs_Code">Basic_Emoji</code> of the form <code class="vocs_Code">[X FE0F]</code> are <strong class="vocs_Strong">enabled</strong>.</li>
+<li class="vocs_ListItem">Emoji with default emoji-presentation are <strong class="vocs_Strong">enabled</strong> as <code class="vocs_Code">[X FE0F]</code>.</li>
+<li class="vocs_ListItem">Remaining single-character emoji are <strong class="vocs_Strong">enabled</strong> as <code class="vocs_Code">[X FE0F]</code> (explicit emoji-presentation).</li>
+<li class="vocs_ListItem">All singular Skin-color Modifiers are <strong class="vocs_Strong">disabled</strong>.</li>
+<li class="vocs_ListItem">All singular Regional Indicators are <strong class="vocs_Strong">disabled</strong>.</li>
+<li class="vocs_ListItem">Blacklisted emoji are <strong class="vocs_Strong">disabled</strong>.</li>
+<li class="vocs_ListItem">Whitelisted emoji are <strong class="vocs_Strong">enabled</strong>.</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Confusables:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Nearly all <a class="vocs_Anchor" href="https://www.unicode.org/Public/security/15.1.0/confusables.txt" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Unicode Confusables</a></li>
+<li class="vocs_ListItem">Emoji are not confusable.</li>
+<li class="vocs_ListItem">ASCII confusables are case-folded.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Example: <code class="vocs_Code">61 (a) LATIN SMALL LETTER A</code> confuses with <code class="vocs_Code">13AA (Ꭺ) CHEROKEE LETTER GO</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="backwards-compatibility" class="vocs_Heading_slugTarget"></div>Backwards Compatibility<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#backwards-compatibility" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">99% of names are still valid.</li>
+<li class="vocs_ListItem">Preserves as much <a class="vocs_Anchor" href="https://unicode.org/reports/tr46/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Unicode IDNA</a> and <a class="vocs_Anchor" href="https://url.spec.whatwg.org/#idna" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">WHATWG URL</a> compatibility as possible.</li>
+<li class="vocs_ListItem">Only <a class="vocs_Anchor" href="/ensip/15#appendix-additional-resources">valid emoji sequences</a> are permitted.</li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="security-considerations" class="vocs_Heading_slugTarget"></div>Security Considerations<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#security-considerations" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Unicode presentation may vary between applications and devices.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Unicode text is ultimately subject to font-styling and display context.</li>
+<li class="vocs_ListItem">Unsupported characters (<code class="vocs_Code">�</code>) may appear unremarkable.</li>
+<li class="vocs_ListItem">Normalized single-character emoji sequences do not retain their explicit emoji-presentation and may display with <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr51/#Presentation_Style" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">text or emoji</a> presentation styling.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">❤︎</code> — text-presentation and default-color</li>
+<li class="vocs_ListItem"><span class="text-green-500"><code class="vocs_Code">❤︎</code></span> — text-presentation and <span class="text-green-500">green</span>-color</li>
+<li class="vocs_ListItem"><span class="text-green-500"><code class="vocs_Code">❤️</code></span> — emoji-presentation and <span class="text-green-500">green</span>-color</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Unsupported emoji sequences with ZWJ may appear indistinguishable from those without ZWJ.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">💩💩 [1F4A9 1F4A9]</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">💩‍💩 [1F4A9 200D 1F4A9]</code> → <em>error: Disallowed character</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Names composed of labels with varying bidi properties <a class="vocs_Anchor" href="https://discuss.ens.domains/t/bidi-label-ordering-spoof/15824" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">may appear differently</a> depending on context.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Normalization does not enforce single-directional names.</li>
+<li class="vocs_ListItem">Names may be composed of labels of different directions but normalized labels are never bidirectional.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">[LTR].[RTL] <code class="vocs_Code">bahrain.مصر</code></li>
+<li class="vocs_ListItem">[LTR+RTL] <code class="vocs_Code">bahrainمصر</code> → <em>error: Illegal mixture: Latin + Arabic</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="vocs_ListItem">Not all normalized names are visually unambiguous.</li>
+<li class="vocs_ListItem">This ENSIP only addresses <strong class="vocs_Strong">single-character</strong> <a class="vocs_Anchor" href="https://www.unicode.org/reports/tr39/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">confusables</a>.<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">There exist confusable <strong class="vocs_Strong">multi-character</strong> sequences:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;ஶ்ரீ&quot; [BB6 BCD BB0 BC0]</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">&quot;ஸ்ரீ&quot; [BB8 BCD BB0 BC0]</code></li>
+</ul>
+</li>
+<li class="vocs_ListItem">There exist confusable emoji sequences:<!-- -->
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><code class="vocs_Code">🚴 [1F6B4]</code> and <code class="vocs_Code">🚴🏻 [1F6B4 1F3FB]</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">🇺🇸 [1F1FA 1F1F8]</code> and <code class="vocs_Code">🇺🇲 [1F1FA 1F1F2]</code></li>
+<li class="vocs_ListItem"><code class="vocs_Code">♥ [2665] BLACK HEART SUIT</code> and <code class="vocs_Code">❤ [2764] HEAVY BLACK HEART</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="copyright" class="vocs_Heading_slugTarget"></div>Copyright<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#copyright" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<p class="vocs_Paragraph">Copyright and related rights waived via <a class="vocs_Anchor" href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">CC0</a>.</p>
+<h2 class="vocs_H2 vocs_Heading"><div id="appendix-reference-specifications" class="vocs_Heading_slugTarget"></div>Appendix: Reference Specifications<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#appendix-reference-specifications" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://eips.ethereum.org/EIPS/eip-137" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">EIP-137: Ethereum Domain Name Service</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor vocs_Link vocs_Link_accent" href="/ensip/1" data-discover="true">ENSIP-1: ENS</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://unicode.org/reports/tr15/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UAX-15: Normalization Forms</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr24/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UAX-24: Script Property</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://unicode.org/reports/tr29/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UAX-29: Text Segmentation</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr31/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UAX-31: Identifier and Pattern Syntax</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr39/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UTS-39: Security Mechanisms</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr44/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UAX-44: Character Database</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://unicode.org/reports/tr46/" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UTS-46: IDNA Compatibility Processing</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://www.unicode.org/reports/tr51" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">UTS-51: Emoji</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://datatracker.ietf.org/doc/html/rfc3492" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">RFC-3492: Punycode</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://datatracker.ietf.org/doc/html/rfc5891" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">RFC-5891: IDNA: Protocol</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://datatracker.ietf.org/doc/html/rfc5892" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">RFC-5892: The Unicode Code Points and IDNA</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/unicode-org/cldr" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Unicode CLDR</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://url.spec.whatwg.org/#idna" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">WHATWG URL: IDNA</a></li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="appendix-additional-resources" class="vocs_Heading_slugTarget"></div>Appendix: Additional Resources<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#appendix-additional-resources" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/groups.md" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Supported Groups</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/emoji.md" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Supported Emoji</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/disallowed.csv" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Additional Disallowed Characters</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/ignored.csv" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Ignored Characters</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/escape.csv" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Should Escape Characters </a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/cm.csv" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Combining Marks</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/nsm.csv" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Non-spacing Marks</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/fenced.csv" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Fenced Characters</a></li>
+<li class="vocs_ListItem"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/tools/ensip/nfc_check.csv" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">NFC Quick Check</a></li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="appendix-validation-tests" class="vocs_Heading_slugTarget"></div>Appendix: Validation Tests<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#appendix-validation-tests" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<p class="vocs_Paragraph">A list of <a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/validate/tests.json" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">validation tests</a> are provided with the following interpretation:</p>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Already Normalized: <code class="vocs_Code">{name: &quot;a&quot;}</code> → <code class="vocs_Code">normalize(&quot;a&quot;)</code> is <code class="vocs_Code">&quot;a&quot;</code></li>
+<li class="vocs_ListItem">Need Normalization: <code class="vocs_Code">{name: &quot;A&quot;, norm: &quot;a&quot;}</code> → <code class="vocs_Code">normalize(&quot;A&quot;)</code> is <code class="vocs_Code">&quot;a&quot;</code></li>
+<li class="vocs_ListItem">Expect Error: <code class="vocs_Code">{name: &quot;@&quot;, error: true}</code> → <code class="vocs_Code">normalize(&quot;@&quot;)</code> throws</li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="annex-beautification" class="vocs_Heading_slugTarget"></div>Annex: Beautification<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#annex-beautification" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<p class="vocs_Paragraph">Follow <a class="vocs_Anchor" href="/ensip/15#algorithm">algorithm</a>, except:</p>
+<ul class="vocs_List vocs_List_unordered">
+<li class="vocs_ListItem">Do not strip <code class="vocs_Code">FE0F</code> from <code class="vocs_Code">Emoji</code> tokens.</li>
+<li class="vocs_ListItem">Replace <code class="vocs_Code">3BE (ξ) GREEK SMALL LETTER XI</code> with <code class="vocs_Code">39E (Ξ) GREEK CAPITAL LETTER XI</code> if the label isn&#x27;t <em>Greek</em>.</li>
+<li class="vocs_ListItem">Example: <code class="vocs_Code">normalize(&quot;‐Ξ1️⃣&quot;) [2010 39E 31 FE0F 20E3]</code> is <code class="vocs_Code">&quot;-ξ1⃣&quot; [2D 3BE 31 20E3]</code></li>
+<li class="vocs_ListItem">Example: <code class="vocs_Code">beautify(&quot;-ξ1⃣&quot;) [2D 3BE 31 20E3]&quot;</code> is <code class="vocs_Code">&quot;-Ξ1️⃣&quot; [2D 39E 31 FE0F 20E3]</code></li>
+</ul>
+<h2 class="vocs_H2 vocs_Heading"><div id="versions" class="vocs_Heading_slugTarget"></div>Versions<a class="vocs_Anchor vocs_Autolink" aria-hidden="true" tabindex="-1" href="/ensip/15#versions" data-discover="true"><div data-autolink-icon="true" class="vocs_Div vocs_AutolinkIcon" style="--vocs_AutolinkIcon_iconUrl:url(/.vocs/icons/link.svg)"></div></a></h2>
+<table class="vocs_Table"><thead><tr class="vocs_TableRow"><th style="text-align:center" class="vocs_TableHeader">Unicode</th><th style="text-align:left" class="vocs_TableHeader"><a class="vocs_Anchor" href="https://www.unicode.org/history/publicationdates.html#Release_Dates" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">Release</a></th><th style="text-align:left" class="vocs_TableHeader">Updated</th><th style="text-align:left" class="vocs_TableHeader"><a class="vocs_Anchor" href="https://github.com/adraffy/ens-normalize.js/blob/main/derive/data/releases.json" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)">SHA-256 of <code class="vocs_Code">spec.json</code></a></th></tr></thead><tbody><tr class="vocs_TableRow"><td style="text-align:center" class="vocs_TableCell"><code class="vocs_Code">15.0.0</code></td><td style="text-align:left" class="vocs_TableCell">2022-09-13</td><td style="text-align:left" class="vocs_TableCell">2023-02-21</td><td style="text-align:left" class="vocs_TableCell"><code class="vocs_Code">962316964553fce6188e25a5166a4c1e906333adf53bdf2964c71dedc0f8e2c8</code></td></tr><tr class="vocs_TableRow"><td style="text-align:center" class="vocs_TableCell"><code class="vocs_Code">15.1.0</code></td><td style="text-align:left" class="vocs_TableCell">2023-09-12</td><td style="text-align:left" class="vocs_TableCell">2024-01-25</td><td style="text-align:left" class="vocs_TableCell"><code class="vocs_Code">1f6d3bdb7a724fe3b91f6d73ab14defcb719e0f4ab79022089c940e7e9c56b9c</code></td></tr><tr class="vocs_TableRow"><td style="text-align:center" class="vocs_TableCell"><code class="vocs_Code">16.0.0</code></td><td style="text-align:left" class="vocs_TableCell">2024-09-10</td><td style="text-align:left" class="vocs_TableCell">2024-09-14</td><td style="text-align:left" class="vocs_TableCell"><code class="vocs_Code">4b3c5210a328d7097500b413bf075ec210bbac045cd804deae5d1ed771304825</code></td></tr><tr class="vocs_TableRow"><td style="text-align:center" class="vocs_TableCell"><code class="vocs_Code">17.0.0</code></td><td style="text-align:left" class="vocs_TableCell">2025-09-09</td><td style="text-align:left" class="vocs_TableCell">2025-09-18</td><td style="text-align:left" class="vocs_TableCell"><code class="vocs_Code">4febc8f5d285cbf80d2320fb0c1777ac25e378eb72910c34ec963d0a4e319c84</code></td></tr></tbody></table></article><footer class="vocs_Footer" data-layout="docs"><div class="vocs_Footer_container"><div><a class="vocs_Footer_editLink" href="https://github.com/ensdomains/ensips/edit/master/ensips/15.md" target="_blank" rel="noopener noreferrer" style="--vocs_ExternalLink_iconUrl:url(/.vocs/icons/arrow-diagonal.svg)"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.1464 1.14645C12.3417 0.951184 12.6583 0.951184 12.8535 1.14645L14.8535 3.14645C15.0488 3.34171 15.0488 3.65829 14.8535 3.85355L10.9109 7.79618C10.8349 7.87218 10.7471 7.93543 10.651 7.9835L6.72359 9.94721C6.53109 10.0435 6.29861 10.0057 6.14643 9.85355C5.99425 9.70137 5.95652 9.46889 6.05277 9.27639L8.01648 5.34897C8.06455 5.25283 8.1278 5.16507 8.2038 5.08907L12.1464 1.14645ZM12.5 2.20711L8.91091 5.79618L7.87266 7.87267L8.12731 8.12732L10.2038 7.08907L13.7929 3.5L12.5 2.20711ZM9.99998 2L8.99998 3H4.9C4.47171 3 4.18056 3.00039 3.95552 3.01877C3.73631 3.03668 3.62421 3.06915 3.54601 3.10899C3.35785 3.20487 3.20487 3.35785 3.10899 3.54601C3.06915 3.62421 3.03669 3.73631 3.01878 3.95552C3.00039 4.18056 3 4.47171 3 4.9V11.1C3 11.5283 3.00039 11.8194 3.01878 12.0445C3.03669 12.2637 3.06915 12.3758 3.10899 12.454C3.20487 12.6422 3.35785 12.7951 3.54601 12.891C3.62421 12.9309 3.73631 12.9633 3.95552 12.9812C4.18056 12.9996 4.47171 13 4.9 13H11.1C11.5283 13 11.8194 12.9996 12.0445 12.9812C12.2637 12.9633 12.3758 12.9309 12.454 12.891C12.6422 12.7951 12.7951 12.6422 12.891 12.454C12.9309 12.3758 12.9633 12.2637 12.9812 12.0445C12.9996 11.8194 13 11.5283 13 11.1V6.99998L14 5.99998V11.1V11.1207C14 11.5231 14 11.8553 13.9779 12.1259C13.9549 12.407 13.9057 12.6653 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.6653 13.9057 12.407 13.9549 12.1259 13.9779C11.8553 14 11.5231 14 11.1207 14H11.1H4.9H4.87934C4.47686 14 4.14468 14 3.87409 13.9779C3.59304 13.9549 3.33469 13.9057 3.09202 13.782C2.7157 13.5903 2.40973 13.2843 2.21799 12.908C2.09434 12.6653 2.04506 12.407 2.0221 12.1259C1.99999 11.8553 1.99999 11.5231 2 11.1207V11.1206V11.1V4.9V4.87935V4.87932V4.87931C1.99999 4.47685 1.99999 4.14468 2.0221 3.87409C2.04506 3.59304 2.09434 3.33469 2.21799 3.09202C2.40973 2.71569 2.7157 2.40973 3.09202 2.21799C3.33469 2.09434 3.59304 2.04506 3.87409 2.0221C4.14468 1.99999 4.47685 1.99999 4.87932 2H4.87935H4.9H9.99998Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg> <!-- -->Edit on Github</a></div></div><div class="hidden flex-col gap-3 sm:flex sm:flex-row sm:items-center sm:justify-between"><div class="text-base font-medium">Did you find this page useful?</div><div class="flex items-center gap-2"><button class="py-3 px-5 rounded-lg inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium transition hover:-translate-y-[1px] active:translate-y-0 ring-2 ring-inset ring-grey-active text-grey-active hover:ring-grey hover:text-grey" aria-label="Did you find this page useful? Yes" aria-pressed="false">Yes</button><button class="py-3 px-5 rounded-lg inline-flex justify-center gap-0.5 overflow-hidden text-sm font-medium transition hover:-translate-y-[1px] active:translate-y-0 ring-2 ring-inset ring-grey-active text-grey-active hover:ring-grey hover:text-grey" aria-label="Did you find this page useful? No" aria-pressed="false">No</button></div></div></footer></div><div data-bottom-observer="true"></div></div></div>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"323ef669b85e40d4ba13d48f5ff255dd","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0b8b467dbdae5d0',t:'MTc4MTQzMzQ5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
