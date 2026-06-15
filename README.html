@@ -1,0 +1,88 @@
+<h3 id="ethglobal-2026-nyc-submission-teama-working-name">ETHGlobal 2026
+NYC submission TeamA (working name)</h3>
+<h4 id="intro">Intro</h4>
+<p>An <a href="https://docs.ens.domains/ensip/10/">ENSIP-10</a> wildcard
+resolver that bridges the <a
+href="https://github.com/z0r0z/wei-names">Wei Name Service</a> into ENS:
+any <code>&lt;label&gt;.fromwei.eth</code> resolves to the address of
+<code>&lt;label&gt;.wei</code>.</p>
+<ul>
+<li>Resolver: <a
+href="https://etherscan.io/address/0x8403F2BEE92296a1858fb83A019899D01a502abe#code"><code>0x8403F2BEE92296a1858fb83A019899D01a502abe</code></a></li>
+<li>Parent: <code>fromwei.eth</code>, with its ENS resolver set to the
+contract above.</li>
+</ul>
+<h4 id="quickstart">Quickstart</h4>
+<pre><code>$ cast resolve-name martindengler.eth --rpc-url &quot;$ETH_RPC_URL&quot;
+0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b</code></pre>
+<pre><code>$ cast resolve-name martindengler.fromwei.eth --rpc-url &quot;$ETH_RPC_URL&quot;
+0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b</code></pre>
+<h4 id="videodemo">Video/Demo</h4>
+<figure>
+<img src="screenshot.png" alt="WNS to ENS wildcard resolution" />
+<figcaption aria-hidden="true">WNS to ENS wildcard
+resolution</figcaption>
+</figure>
+<p>Any <code>&lt;label&gt;.fromwei.eth</code> resolves through ENS to
+the address of <code>&lt;label&gt;.wei</code> in the Wei Name Service,
+via the wildcard resolver.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>ENS name</th>
+<th>resolves to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eg26nyc.fromwei.eth</code></td>
+<td><code>0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b</code></td>
+</tr>
+<tr>
+<td><code>martindengler.fromwei.eth</code></td>
+<td><code>0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to check your .wei name</strong></p>
+<p>Terminal (uses the ENS UniversalResolver, exactly like a wallet):</p>
+<pre><code>cast resolve-name eg26nyc.fromwei.eth
+cast resolve-name martindengler.fromwei.eth
+# -&gt; 0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b</code></pre>
+<p>On Etherscan — open the resolver’s <a
+href="https://etherscan.io/address/0x8403F2BEE92296a1858fb83A019899D01a502abe#readContract"><code>resolve</code>
+function</a>, paste the two values, and click Query. The answer is the
+last 20 bytes of the output; <code>data</code> is the same for every
+name (the <code>addr(bytes32)</code> selector with a zero node, which
+the resolver ignores — it derives the <code>.wei</code> node from
+<code>name</code>).</p>
+<ul>
+<li><code>eg26nyc.fromwei.eth</code>
+<ul>
+<li><code>name</code> =
+<code>0x07656732366e79630766726f6d7765690365746800</code></li>
+<li><code>data</code> =
+<code>0x3b3b57de0000000000000000000000000000000000000000000000000000000000000000</code></li>
+</ul></li>
+<li><code>martindengler.fromwei.eth</code>
+<ul>
+<li><code>name</code> =
+<code>0x0d6d617274696e64656e676c65720766726f6d7765690365746800</code></li>
+<li><code>data</code> =
+<code>0x3b3b57de0000000000000000000000000000000000000000000000000000000000000000</code></li>
+</ul></li>
+</ul>
+<p>Block-explorer <em>search boxes</em> (Etherscan, Blockchair) don’t
+perform ENSIP-10 wildcard resolution, so they report these subnames as
+“not found”. Wallets (MetaMask), <code>viem</code>, <code>ethers</code>,
+and <code>cast</code> resolve them correctly.</p>
+<h4 id="hacking-next-steps">Hacking / Next steps</h4>
+<ul>
+<li>see if we can handle reverse resolution</li>
+<li>see if etherscan.io can do ENS resolves fully – change a wei name to
+a new wallet and try that</li>
+</ul>

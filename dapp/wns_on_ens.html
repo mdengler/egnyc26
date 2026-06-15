@@ -3,11 +3,56 @@
     <title>WNS in ENS demo</title>
   </head>
   <body>
-    Links to etherscan and other places where I can demo that WNS is resolved
-    to ENS undernearth fromwei.eth:
+    <h1>Wei Name Service &rarr; ENS</h1>
+
+    <p>
+      Any <code>&lt;label&gt;.fromwei.eth</code> resolves through ENS to the address of
+      <code>&lt;label&gt;.wei</code> in the
+      <a href="https://github.com/z0r0z/wei-names">Wei Name Service</a>, via an
+      <a href="https://docs.ens.domains/ensip/10/">ENSIP-10</a> wildcard resolver
+      (<a href="https://etherscan.io/address/0x8403F2BEE92296a1858fb83A019899D01a502abe#code">contract, verified</a>).
+    </p>
+
+    <h2>Live mappings</h2>
+    <table border="1" cellpadding="4">
+      <tr><th>ENS name</th><th>resolves to</th></tr>
+      <tr><td><code>eg26nyc.fromwei.eth</code></td><td><code>0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b</code></td></tr>
+      <tr><td><code>martindengler.fromwei.eth</code></td><td><code>0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b</code></td></tr>
+    </table>
+
+    <h2>Verify it yourself</h2>
+
+    <p><strong>In a terminal</strong> (uses the ENS UniversalResolver, exactly like a wallet does):</p>
+    <pre>cast resolve-name eg26nyc.fromwei.eth
+cast resolve-name martindengler.fromwei.eth
+# &rarr; 0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b</pre>
+
+    <p>
+      <strong>On Etherscan</strong> &mdash; open the resolver's
+      <a href="https://etherscan.io/address/0x8403F2BEE92296a1858fb83A019899D01a502abe#readContract"><code>resolve</code> function</a>,
+      paste the two values below, and click <em>Query</em>. The answer is the last 20 bytes of the output.
+      (<code>data</code> is the same for every name &mdash; the <code>addr(bytes32)</code> selector with a zero
+      node, which the resolver ignores; it derives the <code>.wei</code> node from <code>name</code>.)
+    </p>
     <ul>
-      <li>Ehterscan demo</li>
+      <li>
+        <code>eg26nyc.fromwei.eth</code>
+        <pre>name = 0x07656732366e79630766726f6d7765690365746800
+data = 0x3b3b57de0000000000000000000000000000000000000000000000000000000000000000</pre>
+      </li>
+      <li>
+        <code>martindengler.fromwei.eth</code>
+        <pre>name = 0x0d6d617274696e64656e676c65720766726f6d7765690365746800
+data = 0x3b3b57de0000000000000000000000000000000000000000000000000000000000000000</pre>
+      </li>
     </ul>
+
+    <p>
+      Note: block-explorer <em>search boxes</em> (Etherscan, Blockchair) do not perform ENSIP-10
+      wildcard resolution, so they report these subnames as &ldquo;not found&rdquo;. ENSIP-10-aware
+      clients &mdash; wallets (MetaMask), <code>viem</code>, <code>ethers</code>, <code>cast</code> &mdash;
+      resolve them correctly, as shown above.
+    </p>
   </body>
 </html>
 
