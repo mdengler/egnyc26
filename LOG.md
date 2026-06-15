@@ -1,4 +1,4 @@
-## ETHGlobal 2026 NYC submission  TeamA (working name)
+## ETHGlobal 2026 NYC submission  ENSFromWei
 
 ### high-level TODOs
 
@@ -11,26 +11,153 @@
 - [ ] create demo
 - [ ] create logos
 - [ ] record video
-- [ ] put in project submission
-- [ ] refine as time allows
-- [ ] document
-- [ ] say thanks and goodbyes
+- [x] put in project submission
+- [x] refine as time allows
+- [x] document
+- [x] say thanks and goodbyes
 
 
-### implementation scratchpad
+### post-submission work
 
-test/FromWNSResolver.t.sol
-check test wei name - use martindengler.wei
-interate on "subway runbook" steps
-check time constraints and fill in project submission web page
+- mine a cool vanity address for `CREATE2`:
 
+```
+ D. CREATE2 with this toolset
 
-### Next study steps
+  forge create --salt <bytes32> routes deployment through the canonical CREATE2 factory at 0x4e59b44847b379578588920cA78FbF26c0B4956C
+  (present on mainnet). The address is keccak(factory, salt, keccak(initcode)) — fully determined before you broadcast.
 
-- solidity interface vs contract declaration nuances (e.g., why `returns` goes in `interface` and not `contract`)
+  Why bother: deterministic address (know/commit it in advance), identical address re-deployable on other chains, and you can mine a
+  vanity prefix — the z0r0z convention. Caveat: any bytecode change (even a comment that alters compilation) changes the address, and
+  the same salt+initcode can't be deployed twice.
+
+  Optional vanity (skip if tight on time):
+  forge build
+  cast create2 --starts-with 0x0000 \
+    --deployer 0x4e59b44847b379578588920cA78FbF26c0B4956C \
+    --init-code "$(forge inspect FromWNSResolver bytecode)"
+  # feed the printed salt into `forge create --salt`
+
+INIT=$(forge inspect src/FromWNSResolver.sol:FromWNSResolver bytecode)
+SALT=0x0000000000000000000000000000000000000000000000000000000000000001
+cast create2 --deployer 0x4e59b44847b379578588920cA78FbF26c0B4956C --salt $SALT --init-code "$INIT"  # predicts the address
+cast send 0x4e59b44847b379578588920cA78FbF26c0B4956C $(cast concat-hex $SALT "$INIT") \
+  --rpc-url "$ETH_RPC_URL" --account deployer
+```
 
 
 ### Journal
+
+
+#### 2026-06-16 12:00
+
+Walked past the Finalist judging line and it was still long!
+
+
+#### 2026-06-16 10:00
+
+Presented to judge at ENS partner booth.  Judge was very polite and mentioned it was an impressive start for a first solidity development, and I [credited z0r0zzz/zolidity](https://github.com/z0r0zzz/zolidity) because all the good taste comes from there, I'm sure.  I noted that Claude was used in the creation of `resolve(..)`, but that I needed to drive it pretty closely because it really messed up the key idea of the algorithm; see next point
+
+
+
+##### Claude experience
+
+Claude was helpful for both learning and coding, with caveats.  I've used Claude/ChatGPT/open-weights models a lot in personal and professional projects, and there are pluses and minuses.  Seeing "tech debt" issues in hackathon submission repos less than 48 hours old is bad; seeing incredible demos done in 48 hours with front ends and integrations that would take teams of people months four years ago is great.  Claude was used to help me understand and critique the solidity interfaces and runtime environment, but made some errors when it came to actual coding; principally, it implemented the core "strip '.fromwei.eth' suffix and call WNS resolver" logic wrong.  Actually reading the suggestions before I re-typed them, and working in very small conceptual steps (as it was my first solidity contract) was key.
+
+Fixing this issue was a simple matter of me actually knowing what I want to implement and seeing that claude had written code that effectively did (in python/pseudocode) `call_wns_with(input_ens_name[0])` instead of `call_wns_with(input_end_name[:-2]`.
+
+```
+[Claude Opus 4.8 high]
+  The contract (verified ABI) + fork test — paste-ready
+
+  src/FromWNSResolver.sol:
+
+  // SPDX-License-Identifier: MIT
+  pragma solidity ^0.8.30;
+
+  interface IWNS {
+      function resolve(uint256 tokenId) external view returns (address);
+  }
+
+  /// @notice ENSIP-10 wildcard resolver: *.fromwei.eth -> <label>.wei via Wei Name Service.
+  contract FromWNSResolver {
+      IWNS internal constant WNS = IWNS(0x0000000000696760E15f265e828DB644A0c242EB);
+
+      /// @dev namehash("wei"); verify with `cast namehash wei`.
+      bytes32 internal constant WEI_NODE =
+          0xa82820059d5df798546bcc2985157a77c3eef25eba9ba01899927333efacbd6f;
+
+      function resolve(bytes calldata name, bytes calldata data)
+      {
+          // leftmost DNS label == the .wei second-level label (e.g. "egnyc26")
+          uint256 len = uint8(name[0]);
+[...]
+          return ""; // text/contenthash/other: no record
+      }
+
+> Thanks.  Couple of issues:
+[...]
+  - what's the motivation for `uint256 len = uint8(name[0]);` in the draft `resolve(..)` function?  Don't we need to strip off the `.fromwei.eth` and resolve the rest with `IWNS`?
+
+[...]
+
+  We keep only that first label and ignore everything after it (fromwei, eth, terminator). That discard is the "strip off .fromwei.eth."
+
+[...]
+
+>  you're doing the stripping wrong, right?  What if we have to resolve `sub3.sub2.sub1.martindengler.fromwei.eth`?
+
+  Thought for 2m 30s (ctrl+o to expand)
+
+Yes — good catch, the stripping is wrong. It only ever reads name[0], the first label. For sub3.sub2.sub1.martindengler.fromwei.eth it would compute namehash("sub3.wei") and throw away sub2.sub1.martindengler entirely.
+
+  What it should do: the mapping is X.fromwei.eth → X.wei for any prefix X. So we strip the fixed .fromwei.eth parent and namehash the whole remaining prefix under .wei — here, namehash("sub3.sub2.sub1.martindengler.wei").
+```
+
+
+#### 2026-06-16 10:00
+
+Could not submit for finalist track because of lack of video; but, as this was a very primitive first-contract project, that's OK.  Walked past the Finalist judging line and it was huge, still (despite having opened at 09:30).
+
+
+#### 2026-06-16 09:30
+
+fixed a screenshot error in the project submission; now show [MetaMask resolving our WNS name via `*.fromwei.eth`](screenshot.png).
+
+
+#### 2026-06-16 09:01
+
+Project submitted, but without any good images or a video :(.
+
+Resolver updated!
+
+```
+20260614-08:54.06 martin@cdcx4 eg ▶ $ cast send 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e \
+    "setResolver(bytes32,address)" \
+    0xa19d84d340e6a35b7d85a0a3279db375e3f60da266e4d82a3747a515e1e56170 \
+    0x8403F2BEE92296a1858fb83A019899D01a502abe \
+    --rpc-url "$ETH_RPC_URL" --account deployer
+Enter keystore password:
+
+blockHash            0x003648efede8ac76f32eaf29d66675b4a47c745cadbfec5f6c168a3b851d6664
+blockNumber          25315895
+contractAddress      
+cumulativeGasUsed    51363929
+effectiveGasPrice    129740175
+from                 0xf4F7F1BD0905EFe61382dE895eC3C1eD321B995b
+gasUsed              31215
+logs                 [{"address":"0x00000000000c2e074ec69a0dfb2997ba6c7d2e1e","topics":["0x335721b01866dc23fbee8b6b2c7b1e14d6f05c28cd35a2c934239f94095602a0","0xa19d84d340e6a35b7d85a0a3279db375e3f60da266e4d82a3747a515e1e56170"],"data":"0x0000000000000000000000008403f2bee92296a1858fb83a019899d01a502abe","blockHash":"0x003648efede8ac76f32eaf29d66675b4a47c745cadbfec5f6c168a3b851d6664","blockNumber":"0x1824a37","blockTimestamp":"0x6a2ea68f","transactionHash":"0x66bdab4be469dc51a808e945d9bb30cb6db47db20ce959d2edf59d7e80913263","transactionIndex":"0x17c","logIndex":"0x53b","removed":false}]
+logsBloom            0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000040000000000000000000000000008000000000000000000000000000000000000000000000000000000000000400000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000004000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000100000000000000000000000000000000000000
+root                 
+status               1 (success)
+transactionHash      0x66bdab4be469dc51a808e945d9bb30cb6db47db20ce959d2edf59d7e80913263
+transactionIndex     380
+type                 2
+blobGasPrice         
+blobGasUsed          
+to                   0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e
+20260614-09:03.13 martin@cdcx4 eg ▶ $ 
+```
 
 
 #### 2026-06-14 08:47
