@@ -27,7 +27,7 @@ $ cast resolve-name martindengler.fromwei.eth --rpc-url "$ETH_RPC_URL"
 
 #### Video/Demo
 
-![WNS to ENS wildcard resolution](screenshot.png)
+![WNS to ENS wildcard resolution](screenshot-01-metamask.png)
 
 Any `<label>.fromwei.eth` resolves through ENS to the address of `<label>.wei` in the
 Wei Name Service, via the wildcard resolver.
