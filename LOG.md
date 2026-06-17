@@ -21,23 +21,26 @@
 
 - mine a cool vanity address for `CREATE2`:
 
+#### CREATE2 with this toolset
+
 ```
- D. CREATE2 with this toolset
-
   forge create --salt <bytes32> routes deployment through the canonical CREATE2 factory at 0x4e59b44847b379578588920cA78FbF26c0B4956C
-  (present on mainnet). The address is keccak(factory, salt, keccak(initcode)) — fully determined before you broadcast.
+```
 
-  Why bother: deterministic address (know/commit it in advance), identical address re-deployable on other chains, and you can mine a
-  vanity prefix — the z0r0z convention. Caveat: any bytecode change (even a comment that alters compilation) changes the address, and
-  the same salt+initcode can't be deployed twice.
+(present on mainnet). The address is keccak(factory, salt, keccak(initcode)) — fully determined before broadcast.
 
-  Optional vanity (skip if tight on time):
-  forge build
+Deterministic address (know/commit it in advance), identical address re-deployable on other chains, and you can mine a vanity prefix — the z0r0z convention. Caveat: any bytecode change (even a comment that alters compilation) changes the address, and the same salt+initcode can't be deployed twice.
+
+```
+forge build
   cast create2 --starts-with 0x0000 \
     --deployer 0x4e59b44847b379578588920cA78FbF26c0B4956C \
     --init-code "$(forge inspect FromWNSResolver bytecode)"
   # feed the printed salt into `forge create --salt`
+```
 
+
+```
 INIT=$(forge inspect src/FromWNSResolver.sol:FromWNSResolver bytecode)
 SALT=0x0000000000000000000000000000000000000000000000000000000000000001
 cast create2 --deployer 0x4e59b44847b379578588920cA78FbF26c0B4956C --salt $SALT --init-code "$INIT"  # predicts the address
